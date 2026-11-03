@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>L'enquête de l'Avent</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="De Nazareth à la crèche : 14 témoins, 14 énigmes, une lettre par jour.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Poppins:wght@400;500;600&display=swap">
+<style>
+/* Storybook journey: one illustrated vertical road from Nazareth (top, night) to the crèche (bottom, night),
+   crossing a day of desert. Each day opens as an animated book page over the map. Single deliberate look. */
+:root{
+  --night:#1b1840; --night2:#2e2a6b; --dusk:#8a4f7d; --rose:#d9837d; --sand:#f1d9ae; --sand2:#e6c28c; --dune:#d8a86f;
+  --paper:#fff8ea; --paper2:#f7ead0; --ink:#2b2238; --muted:#7b6a5d; --red:#b5413a; --gold:#e6a92e; --gold2:#ffd27a;
+  --river:#6fa8d4; --green:#7d8f4e; --c1:#2f8a8a; --c2:#3e6fa3; --c3:#7a4f9a;
+  --display:"Fredoka","Baloo 2","Trebuchet MS",system-ui,sans-serif;
+  --body:"Poppins",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--night);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;overflow-x:hidden}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--gold2);outline-offset:3px}
+h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.1;margin:0;text-wrap:balance}
+
+/* ===== MAP ===== */
+#world{position:relative;width:100%;overflow:hidden}
+#world::before{content:"";position:fixed;inset:0;z-index:-1;
+  background:radial-gradient(1200px 800px at 50% 0%,#2e2a6b,transparent),linear-gradient(180deg,#1b1840,#3a2f63 40%,#1b1840)}
+#map{display:block;width:100%;height:auto}
+.title{position:absolute;top:calc(28px + env(safe-area-inset-top,0px));left:0;right:0;text-align:center;color:#fff;padding:0 16px;pointer-events:none}
+.title .eb{display:inline-block;pointer-events:auto;font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold2);user-select:none;padding:4px 8px}
+.title h1{font-size:clamp(34px,8vw,64px);text-shadow:0 4px 0 rgba(0,0,0,.25)}
+.title p{margin:8px auto 0;max-width:34ch;color:#e9dff5;font-size:clamp(14px,2.6vw,17px)}
+.st{cursor:pointer;outline:none}
+.st .med{transition:transform .25s cubic-bezier(.3,1.6,.5,1);transform-box:fill-box;transform-origin:center}
+.st:hover .med,.st:focus-visible .med{transform:scale(1.12)}
+.st:focus-visible .ring{stroke:var(--gold2);stroke-width:6}
+.st.locked{cursor:pointer}
+.st.shake .med{animation:shake .45s}
+@keyframes shake{20%{transform:translateX(-7px) rotate(-6deg)}40%{transform:translateX(7px) rotate(6deg)}60%{transform:translateX(-5px)}80%{transform:translateX(4px)}}
+.today .halo{animation:halo 1.8s ease-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes halo{0%{transform:scale(.8);opacity:.9}100%{transform:scale(1.7);opacity:0}}
+.today .med{animation:bob 1.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-8px)}}
+.tw{animation:tw 2.4s ease-in-out infinite}
+@keyframes tw{50%{opacity:.25}}
+.cloud{animation:drift 90s linear infinite}
+@keyframes drift{from{transform:translateX(-1300px)}to{transform:translateX(2100px)}}
+.flow{animation:flow 2.5s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-60}}
+.sway{animation:sway 4s ease-in-out infinite;transform-box:fill-box;transform-origin:bottom center}
+@keyframes sway{50%{transform:rotate(3deg)}}
+.hop{animation:hop 2.6s ease-in-out infinite;transform-box:fill-box;transform-origin:bottom}
+@keyframes hop{0%,70%,100%{transform:translateY(0)}80%{transform:translateY(-8px)}}
+.glow{animation:glow 3s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes glow{50%{transform:scale(1.15);opacity:.65}}
+#pion{transition:none}
+.walk{animation:walk .35s ease-in-out infinite}
+@keyframes walk{50%{transform:translateY(-4px)}}
+
+.tip{position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);opacity:0;background:var(--paper);color:var(--ink);
+  padding:12px 18px;border-radius:16px;font-weight:600;box-shadow:0 10px 30px rgba(0,0,0,.35);transition:.3s;pointer-events:none;z-index:40;max-width:calc(100% - 32px);text-align:center}
+.tip.on{opacity:1;transform:translate(-50%,0)}
+
+/* floating carnet button */
+.carnetbtn{position:fixed;z-index:30;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));
+  display:flex;align-items:center;gap:10px;background:var(--paper);border:0;border-radius:999px;padding:10px 18px 10px 10px;box-shadow:0 8px 24px rgba(0,0,0,.35);font-weight:600}
+.carnetbtn .ic{width:40px;height:40px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;font-family:var(--display);font-size:20px}
+.carnetbtn small{display:block;font-weight:500;color:var(--muted);font-size:12px;line-height:1.1}
+.todaybtn{position:fixed;z-index:30;left:max(16px,env(safe-area-inset-left,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));
+  background:var(--gold);border:0;border-radius:999px;padding:14px 20px;font-weight:700;box-shadow:0 8px 24px rgba(0,0,0,.35);color:var(--ink)}
+.previewbtn{position:fixed;z-index:31;top:calc(10px + env(safe-area-inset-top,0px));right:max(10px,env(safe-area-inset-right,0px));background:var(--ink);color:var(--paper);border:0;border-radius:999px;padding:6px 12px;font-size:12px;font-weight:600}
+
+/* ===== OVERLAYS ===== */
+.ov{position:fixed;inset:0;z-index:50;background:var(--paper);opacity:0;pointer-events:none;transition:opacity .35s}
+.ov.on{opacity:1;pointer-events:auto}
+.book{position:absolute;inset:0;overflow:auto;background:var(--paper);transform:scale(.96);transition:transform .5s cubic-bezier(.2,1.1,.3,1);overscroll-behavior:contain}
+.ov.on .book{transform:none}
+
+.close{position:sticky;top:0;z-index:6;height:0}
+.close>div{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:calc(12px + env(safe-area-inset-top,0px)) max(14px,env(safe-area-inset-right,0px)) 0 max(14px,env(safe-area-inset-left,0px))}
+.close .pill{box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.dhero{position:relative;overflow:hidden;color:#fff;padding:calc(84px + env(safe-area-inset-top,0px)) max(18px,env(safe-area-inset-right,0px)) 90px max(18px,env(safe-area-inset-left,0px))}
+.dhero .deco{position:absolute;inset:0;width:100%;height:100%}
+.dhero .head{position:relative;max-width:920px;margin:0 auto;padding:0}
+.dhero .head .k{color:var(--gold2)}
+.dhero.day{color:var(--ink)}
+.dhero.day .head .k{color:var(--red)}
+.dhero.day .head h2{text-shadow:none}
+.frame div.novid{display:grid;background:linear-gradient(180deg,var(--night2),var(--dusk) 70%,var(--rose))}
+.dhero .head h2{text-shadow:0 3px 0 rgba(0,0,0,.2);font-size:clamp(32px,6.5vw,60px)}
+.dhero .head svg{width:clamp(96px,16vw,150px);height:auto}
+.pg{max-width:920px;margin:-56px auto 0;position:relative;padding:0 max(18px,env(safe-area-inset-right,0px)) calc(48px + env(safe-area-inset-bottom,0px)) max(18px,env(safe-area-inset-left,0px))}
+.pill{border:0;background:var(--paper2);border-radius:999px;padding:9px 16px;font-weight:600}
+.pill[disabled]{opacity:.35;cursor:default}
+.navs{display:flex;gap:8px}
+
+.head{display:flex;gap:18px;align-items:center;padding:4px 0 18px}
+.head svg{flex:none;width:96px;height:96px}
+.head{position:relative}
+.head .k{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--red)}
+.head h2{font-size:clamp(28px,5.5vw,44px)}
+.pop{animation:pop .6s cubic-bezier(.3,1.6,.5,1) both}
+@keyframes pop{from{transform:scale(.3) rotate(-12deg);opacity:0}}
+.rise{animation:rise .6s ease both}
+@keyframes rise{from{transform:translateY(24px);opacity:0}}
+.frame{background:#6b4a32;padding:10px;border-radius:20px;box-shadow:inset 0 0 0 4px #8a6142,0 10px 0 #4a3222}
+.frame video,.frame .novid{display:block;width:100%;aspect-ratio:16/9;border-radius:12px;background:#000}
+.novid{background:linear-gradient(180deg,var(--night2),var(--dusk) 70%,var(--rose));color:#fff;display:grid;place-items:center;text-align:center;font-family:var(--display);font-size:clamp(18px,3.4vw,26px);padding:16px}
+.sec{margin-top:28px;display:flex;flex-direction:column;gap:12px}
+.sec>h3{font-size:24px}
+.sec>p.hint,.hint{color:var(--muted);font-size:14px;margin:0}
+
+/* scroll (témoignage) */
+.scroll{border:0;background:none;padding:0;text-align:left;width:100%}
+.scroll .bar{width:100%;display:flex;align-items:center;gap:10px;background:var(--paper2);border-radius:14px;padding:12px 16px;font-weight:600}
+.scroll .bar::after{content:"+";margin-left:auto;font-size:22px;line-height:1;transition:transform .3s}
+.scroll[aria-expanded="true"] .bar::after{transform:rotate(45deg)}
+.scrolltext{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s ease}
+.scrolltext>div{overflow:hidden}
+.scrolltext.on{grid-template-rows:1fr}
+.scrolltext p{margin:10px 0 0;padding:16px 18px;background:repeating-linear-gradient(0deg,#fbf1dc 0 30px,#f6e7c8 30px 31px);border-radius:12px;font-style:italic;font-size:17px}
+
+/* flip cards */
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.flip{border:0;background:none;padding:0;perspective:900px;min-height:210px;text-align:left}
+.flip .in{display:block;position:relative;width:100%;height:100%;min-height:210px;transition:transform .7s cubic-bezier(.3,1.3,.5,1);transform-style:preserve-3d}
+.flip.on .in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;border-radius:18px;backface-visibility:hidden;-webkit-backface-visibility:hidden;padding:16px;display:flex;flex-direction:column;gap:6px}
+.front{background:var(--k);color:#fff;justify-content:center;align-items:center;text-align:center;
+  background-image:radial-gradient(circle at 20% 20%,rgba(255,255,255,.18) 0 18%,transparent 19%),radial-gradient(circle at 85% 80%,rgba(255,255,255,.12) 0 22%,transparent 23%)}
+.front b{font-family:var(--display);font-size:30px}
+.front small{opacity:.9}
+.front .tap{margin-top:8px;font-size:13px;background:rgba(255,255,255,.2);padding:4px 10px;border-radius:999px}
+.back{background:#fff;border:3px solid var(--k);transform:rotateY(180deg)}
+.back b{font-family:var(--display);color:var(--k);font-size:18px}
+.back p{margin:0;font-size:15.5px}
+
+/* envelope défi */
+.env{border:0;background:none;padding:0;width:100%;text-align:left}
+.envbox{position:relative;background:#e9c98f;border-radius:16px;padding:22px;min-height:150px;overflow:hidden;box-shadow:0 8px 0 #c9a46a}
+.envbox::before{content:"";position:absolute;inset:0 0 auto;height:90px;background:linear-gradient(160deg,#dcb877 50%,transparent 50.5%),linear-gradient(200deg,#dcb877 50%,transparent 50.5%);
+  background-size:50% 100%;background-repeat:no-repeat;background-position:left,right;transform-origin:top;transition:transform .6s}
+.seal{position:absolute;left:50%;top:62px;transform:translate(-50%,-50%);width:58px;height:58px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;
+  font-family:var(--display);font-weight:700;font-size:15px;box-shadow:0 0 0 5px #9c3a33;transition:.4s;z-index:2}
+.envlabel{position:relative;z-index:1;margin-top:96px;text-align:center;font-weight:600;color:#6b4a32}
+.letter{position:relative;z-index:2;background:var(--paper);border-radius:12px;padding:18px;margin-top:0;display:none;flex-direction:column;gap:6px;box-shadow:0 6px 20px rgba(0,0,0,.15)}
+.letter h3{font-size:24px;color:var(--red)}
+.letter p{margin:0}
+.env.on .envbox::before{transform:scaleY(-1)}
+.env.on .seal{transform:translate(-50%,-50%) scale(0) rotate(90deg)}
+.env.on .envlabel{display:none}
+.env.on .letter{display:flex;animation:rise .6s ease both}
+
+/* lettre tile */
+.tilewrap{display:flex;gap:18px;align-items:center;background:var(--paper2);border-radius:18px;padding:16px}
+.tile{flex:none;border:0;padding:0;background:none;width:96px;height:116px;perspective:600px;position:relative}
+.tile .in{display:block;position:absolute;inset:0;transition:transform .8s cubic-bezier(.3,1.4,.5,1);transform-style:preserve-3d}
+.tile.on .in{transform:rotateY(180deg)}
+.tile .f,.tile .b{position:absolute;inset:0;border-radius:16px;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:grid;place-items:center;font-family:var(--display);font-weight:700}
+.tile .f{background:var(--red);color:#fff;font-size:48px;box-shadow:0 6px 0 #8c3029}
+.tile .b{background:#fff;border:4px solid var(--gold);color:var(--red);font-size:64px;transform:rotateY(180deg);box-shadow:0 6px 0 #c48d1f}
+.tile.nope .f{background:#cfc2ad;box-shadow:0 6px 0 #b0a28b}
+.spark{position:fixed;width:10px;height:10px;border-radius:50%;pointer-events:none;z-index:80;animation:spark .9s ease-out forwards}
+@keyframes spark{to{transform:translate(var(--x),var(--y)) scale(.2);opacity:0}}
+
+/* carnet */
+.grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;margin-top:6px}
+.cell{aspect-ratio:3/4;border-radius:12px;display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:clamp(20px,5vw,36px);
+  border:3px dashed #d9c7a8;color:var(--red);background:#fff}
+.cell.got{border:3px solid var(--gold);animation:pop .5s cubic-bezier(.3,1.6,.5,1) both}
+.cell small{display:block;font-size:11px;color:var(--muted);font-family:var(--body);font-weight:500;line-height:1}
+.words{display:flex;flex-direction:column;gap:14px}
+
+/* final crèche */
+.creche{position:relative;border-radius:20px;overflow:hidden;background:linear-gradient(180deg,var(--night),var(--night2) 60%,var(--dusk))}
+.creche svg{display:block;width:100%;height:auto}
+.curtain{position:absolute;inset:0;background:repeating-linear-gradient(90deg,#8c2f2a 0 26px,#a7382f 26px 52px);transform-origin:top;transition:transform 1.4s cubic-bezier(.6,0,.3,1);
+  display:grid;place-items:center;color:#fff;font-family:var(--display);font-size:clamp(20px,4vw,30px);text-align:center;padding:16px}
+.creche.open .curtain{transform:scaleY(0)}
+.phrase{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 18px;padding:18px 8px 6px}
+.phrase .w{display:flex;gap:4px}
+.phrase .w span{flex:none;display:grid;place-items:center;width:clamp(28px,6vw,46px);height:clamp(38px,8vw,60px);border-radius:10px;background:#fff;border:3px solid var(--gold);color:var(--red);
+  font-family:var(--display);font-weight:700;font-size:clamp(20px,4.5vw,34px);opacity:0;transform:translateY(-60px) rotate(-20deg)}
+.creche.open ~ .phrase .w span{animation:drop .6s cubic-bezier(.3,1.5,.5,1) forwards}
+@keyframes drop{to{opacity:1;transform:none}}
+.finaltext{margin:10px 0 0;font-size:17px}
+
+@media (max-width:680px){
+  .cards{grid-template-columns:1fr}
+  .flip,.flip .in{min-height:160px}
+  .dhero .head{flex-direction:column;align-items:flex-start;gap:10px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+<div id="world">
+  <svg id="map" viewBox="0 0 800 2700" role="img" aria-label="Carte du voyage de Nazareth à la crèche"></svg>
+  <div class="title">
+    <span class="eb" id="eb">Enquête de l'Avent 2026</span>
+    <h1>De Nazareth<br>à la crèche</h1>
+    <p id="intro"></p>
+  </div>
+</div>
+<button class="todaybtn" id="todaybtn" hidden>Le témoin du jour</button>
+<button class="carnetbtn" id="carnetbtn"><span class="ic" id="cnt">0</span><span>Mon carnet<small>le message mystère</small></span></button>
+<div class="tip" id="tip" role="status"></div>
+<div class="ov" id="ov" aria-hidden="true"><div class="book" id="book" role="dialog" aria-modal="true" aria-label="Témoin"></div></div>
+
+<script>
+/* ===================== DONNÉES ===================== */
+const PHRASE="IL EST PARMI NOUS";
+const REVEAL_FINAL="2026-12-17T11:00:00";   // heure de la découverte de la crèche
+const LETTER_HOUR="T16:30:00";              // la lettre du jour s'affiche après la classe
+const DAYS=[
+ {n:1,date:"2026-11-30",jour:"lundi 30 novembre",nom:"Rachel",titre:"Rachel, la voisine",lieu:"Nazareth",ic:"rachel",video:"videos/temoin-01.mp4",lettre:"I",
+  texte:"Vous cherchez Marie et Joseph ? Ils sont partis ce matin, très tôt ! Marie avait un gros ventre tout rond, et ils avaient un baluchon énorme. J'ai jeté un œil dedans… il y avait des choses bizarres.",
+  c:["Dans le baluchon : une gourde, du pain, une couverture, une tablette. Qu'est-ce qui n'existait pas à l'époque ?","Devinette : « Je suis pleine d'eau et je pends à l'épaule du voyageur. Qui suis-je ? »","Ils doivent faire 150 km à pied, à environ 25 km par jour. Combien de jours de voyage ?"],
+  defi:"Les mots doux du baluchon",defit:"Chaque élève écrit ou dessine un souhait de bon voyage et le glisse dans le baluchon de l'école. On l'ouvrira le 17 décembre."},
+ {n:2,date:"2026-12-01",jour:"mardi 1er décembre",nom:"Père Claude",titre:"Père Claude, le gardien des vieilles histoires",lieu:"Nazareth",ic:"book",video:"",lettre:"L",
+  texte:"Leur histoire, je la connais : elle est racontée dans un très vieux livre, que je lis souvent. Je ne vais pas tout vous dévoiler, sinon ce ne serait plus une enquête ! Mais je vous confie ceci : la carte de leur voyage.",
+  c:["Sur la carte, montre la maison d'où ils partent, puis l'étoile où ils arrivent.","Compte les étapes sur la carte : combien de témoins allez-vous rencontrer ?","Ce très vieux livre rassemble en fait beaucoup de livres. Comment s'appelle-t-il ? (5 lettres, commence par B)"],
+  defi:"Rencontre avec Père Claude",defit:"Pas de défi aujourd'hui : on écoute Père Claude et on découvre la carte du voyage."},
+ {n:3,date:"2026-12-02",jour:"mercredi 2 décembre",nom:"Le crieur",titre:"Le crieur de l'empereur",lieu:"Nazareth",ic:"horn",video:"",lettre:"E",
+  texte:"Oyez, oyez ! Par ordre de l'empereur, tout le monde doit être compté, et chacun doit aller s'inscrire dans la ville de sa famille. Et ce n'est pas tout : toutes les classes doivent se faire belles pour accueillir les voyageurs !",
+  c:["Comptons ensemble les enfants de la classe, comme l'empereur !","Complète le nom de la ville de Joseph : B E T H L _ _ M.","Remets les lettres dans l'ordre : M – É – L – T – B – H – E – H."],
+  defi:"La grande décoration",defit:"Ce matin, chaque classe décore sa classe et son couloir pour accueillir les voyageurs."},
+ {n:4,date:"2026-12-03",jour:"jeudi 3 décembre",nom:"Le pêcheur",titre:"Le pêcheur",lieu:"Vallée du Jourdain",ic:"fish",video:"",lettre:"S",
+  texte:"Oui, je les ai vus passer ! Ils suivent mon fleuve, le Jourdain, pour éviter les montagnes. La jeune femme avait l'air fatiguée. Mais regardez mes berges : il y traîne plein de déchets…",
+  c:["Compte les poissons dans le filet (dessin distribué en classe).","Avec quoi j'attrape les poissons : un filet, un panier ou un parapluie ?","« Je coule sans jamais m'arrêter, j'ai un lit mais je ne dors jamais. Qui suis-je ? »"],
+  defi:"Cour propre",defit:"Chaque classe ramasse les déchets sur sa partie de la cour."},
+ {n:5,date:"2026-12-04",jour:"vendredi 4 décembre",nom:"Bourricot",titre:"Bourricot, l'âne",lieu:"Au bord du fleuve",ic:"donkey",video:"",lettre:"T",
+  texte:"Hi-han ! C'est moi qui porte Marie et les bagages. Joseph me répète tout le temps : « Doucement, Bourricot, doucement ! » Je me demande bien pourquoi…",
+  c:["Imite le cri de Bourricot !","Trouve l'intrus : l'âne, le cheval, la poule, le chameau. Lequel ne peut pas porter Marie ?","Enquête : pourquoi Joseph dit-il « doucement » ? Note ton hypothèse et l'indice qui la soutient."],
+  defi:"Un coup de main",defit:"Chaque classe choisit un service à rendre à l'école aujourd'hui."},
+ {n:6,date:"2026-12-07",jour:"lundi 7 décembre",nom:"Tobie",titre:"Tobie, l'apprenti de Joseph",lieu:"Le campement",ic:"cradle",video:"",lettre:"P",
+  texte:"Ouf, je les ai rattrapés ! Juste avant de partir, Joseph avait fabriqué un objet en bois tout petit, avec beaucoup de soin… et il l'a oublié à l'atelier ! J'ai couru pendant des jours pour le lui rapporter.",
+  c:["Parmi un marteau, une casserole et un pinceau, quel est l'outil du charpentier ?","« Je suis en bois et un bébé dort dedans. » Indice : je commence par BER.","« Je suis en bois, je me balance doucement, et bientôt quelqu'un de tout petit dormira en moi. »"],
+  defi:"Fabriqué avec nos mains",defit:"Chaque classe fabrique un petit objet à offrir aux résidents d'un Ehpad."},
+ {n:7,date:"2026-12-08",jour:"mardi 8 décembre",nom:"Myriam",titre:"Myriam, la marchande de dattes",lieu:"Jéricho",ic:"palm",video:"",lettre:"A",
+  texte:"Bienvenue à Jéricho, la ville des palmiers ! J'ai donné des dattes à la jeune femme : « Mange, il faut prendre des forces, surtout dans ton état ! » Elle a ri.",
+  c:["Sur quel arbre poussent les dattes : un sapin, un pommier ou un palmier ?","Remets les lettres dans l'ordre : T – T – E – D – A – S.","Vrai ou faux : Jéricho est l'une des plus vieilles villes du monde."],
+  defi:"Partager, c'est meilleur",defit:"Chaque classe prépare des biscuits pour sa classe jumelle."},
+ {n:8,date:"2026-12-09",jour:"mercredi 9 décembre",nom:"Élie",titre:"Élie, le petit chevrier",lieu:"Le désert",ic:"goat",video:"",lettre:"R",
+  texte:"Je garde les chèvres de mon grand-père dans le désert. Je leur ai montré le chemin vers Jérusalem. Ça grimpe dur, et la jeune femme devait souvent s'arrêter pour souffler !",
+  c:["Vers Jérusalem, ça monte ou ça descend ? Mime-le !","Que me donnent mes chèvres : du lait, du jus d'orange ou du chocolat ?","Dans le désert, qu'est-ce qui est le plus précieux pour un voyageur ? Explique pourquoi."],
+  defi:"Encourager",defit:"Chaque classe écrit des cartes d'encouragement pour sa classe jumelle ou le personnel de l'école."},
+ {n:9,date:"2026-12-10",jour:"jeudi 10 décembre",nom:"Le gardien",titre:"Le gardien de la porte",lieu:"Jérusalem",ic:"key",video:"",lettre:"M",
+  texte:"Halte ! Personne ne passe sans répondre à ma question. Les voyageurs de Nazareth ? Ils ne sont pas restés, ils voulaient arriver à Bethléem au plus vite.",
+  c:["Quel est le mot magique pour que j'ouvre la porte ?","« J'ai des dents mais je ne mange jamais, et j'ouvre les portes. Qui suis-je ? »","« Il est à toi, mais les autres s'en servent bien plus que toi. Qu'est-ce que c'est ? »"],
+  defi:"Journée du bonjour",defit:"Les CM2 accueillent les élèves au portail, et chaque classe va saluer sa classe jumelle."},
+ {n:10,date:"2026-12-11",jour:"vendredi 11 décembre",nom:"Anna",titre:"Anna, la tisserande",lieu:"Marché de Jérusalem",ic:"yarn",video:"",lettre:"I",
+  texte:"Ils se sont arrêtés à mon étal ! La jeune femme m'a acheté de longues bandes de tissu très doux. On s'en sert pour envelopper… ah non, je ne vous dis pas tout !",
+  c:["Pour habiller un tout-petit : des bottes, un casque ou une couverture douce ?","Ces bandes de tissu servent à : envelopper un bébé, faire un drapeau ou pêcher ?","Remets les lettres dans l'ordre pour trouver leur nom : L – S – G – A – N – E."],
+  defi:"Tisser ensemble",defit:"Chaque élève décore une bande de papier ; on les assemble en une grande guirlande pour la crèche."},
+ {n:11,date:"2026-12-14",jour:"lundi 14 décembre",nom:"L'étoile",titre:"L'étoile",lieu:"Route de Bethléem",ic:"star",video:"",lettre:"N",
+  texte:"Coucou, là-haut ! Je brille plus fort que toutes les autres. Ce soir, je vais m'arrêter juste au-dessus d'un endroit très spécial à Bethléem. Suivez-moi !",
+  c:["Compte les branches de l'étoile (dessin distribué en classe).","Décode où je m'arrête, avec A = 1, B = 2, C = 3… : 1 – 2 – 18 – 9.","Charade : mon premier est la première lettre de l'alphabet ; mon second arrive au verre qu'on fait tomber (un…) ; mon tout protège de la pluie et du froid."],
+  defi:"Des étoiles partout",defit:"Chaque classe fabrique des étoiles pour décorer l'école."},
+ {n:12,date:"2026-12-15",jour:"mardi 15 décembre",nom:"L'aubergiste",titre:"L'aubergiste",lieu:"Bethléem",ic:"lantern",video:"",lettre:"O",
+  texte:"Complet, complet ! Quand ce couple est arrivé, la jeune femme ne pouvait plus faire un pas. Alors je leur ai proposé l'abri où dorment mes animaux. Au moins, il y fait chaud.",
+  c:["Quels animaux dorment dans l'abri ? Fais le cri de l'un d'eux.","Dans l'abri, la « crèche », c'est : un lit, une mangeoire ou une porte ?","Et toi, comment peux-tu faire de la place à quelqu'un cette semaine ? Donne un exemple concret."],
+  defi:"Faire de la place",defit:"Chaque classe reçoit sa classe jumelle pour un moment partagé."},
+ {n:13,date:"2026-12-16",jour:"mercredi 16 décembre",nom:"Benjamin",titre:"Benjamin, le berger",lieu:"Les champs",ic:"sheep",video:"",lettre:"U",
+  texte:"Cette nuit, on gardait nos moutons, et d'un coup le ciel s'est rempli de lumière et de chants. On nous a dit d'aller voir à l'abri, en ville, qu'une grande nouvelle nous y attendait.",
+  c:["Quels animaux garde Benjamin ? Imite leur cri.","Le petit du mouton s'appelle : un agneau, un chaton ou un poussin ?","Avec tous tes indices, quelle est la grande nouvelle ? Écris ton hypothèse, on vérifie demain."],
+  defi:"Préparez vos voix",defit:"Chaque classe apprend un chant de Noël, chanté à toute l'école demain."},
+ {n:14,date:"2026-12-17",jour:"jeudi 17 décembre",nom:"Le bœuf",titre:"Le bœuf",lieu:"La crèche",ic:"ox",video:"",lettre:"S",
+  texte:"Meuh… Vous voilà enfin ! Cette nuit, il y avait quelqu'un de tout, tout petit dans ma mangeoire. Mais ce matin… plus personne ! Où est-il passé ?",
+  c:["Regarde bien la crèche : qu'est-ce qui manque ?","Rassemble tes 14 lettres et lis la phrase.","Lis la phrase, puis cherche ce qu'elle veut dire. Comment peut-il être parmi nous ?"],
+  defi:"Tous à la crèche",defit:"Toute l'école se retrouve devant la crèche : on soulève le drap, on ouvre le baluchon et on chante."},
+];
+
+/* ===================== ÉTAT ===================== */
+let preview=false;try{preview=localStorage.getItem("avent-apercu")==="1"}catch(e){}
+const now=()=>new Date();
+const isOpen=d=>preview||now()>=new Date(d.date+"T00:00:00");
+const letterShown=d=>preview||(d.n===14?now()>=new Date(REVEAL_FINAL):now()>=new Date(d.date+LETTER_HOUR));
+const todayN=()=>{if(preview)return 14;let t=0;for(const d of DAYS)if(now()>=new Date(d.date+"T00:00:00"))t=d.n;return t};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const $=id=>document.getElementById(id);
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ===================== ICÔNES (dessinées, centrées sur 0,0, ~70px) ===================== */
+const IC={
+ rachel:`<path d="M-30 18 Q-34 -30 0 -34 Q34 -30 30 18 Q20 34 0 34 Q-20 34 -30 18Z" fill="#b5413a"/><ellipse cy="2" rx="20" ry="23" fill="#e6b48c"/><path d="M-24 -6 Q-22 -28 0 -28 Q22 -28 24 -6 Q16 -18 0 -18 Q-16 -18 -24 -6Z" fill="#c9524a"/><circle cx="-8" cy="0" r="3" fill="#2c1b14"/><circle cx="8" cy="0" r="3" fill="#2c1b14"/><path d="M-7 11 Q0 16 7 11" stroke="#7a2a2a" stroke-width="3" fill="none" stroke-linecap="round"/>`,
+ book:`<path d="M-32 -18 Q-16 -26 0 -18 V24 Q-16 16 -32 24Z" fill="#fff8ea" stroke="#6b4a32" stroke-width="3"/><path d="M32 -18 Q16 -26 0 -18 V24 Q16 16 32 24Z" fill="#fff8ea" stroke="#6b4a32" stroke-width="3"/><path d="M-26 -8 H-8 M-26 2 H-8 M-26 12 H-12 M8 -8 H26 M8 2 H26 M8 12 H22" stroke="#c9a46a" stroke-width="3"/>`,
+ horn:`<path d="M-30 -6 L14 -22 Q30 -26 30 0 Q30 26 14 22 L-30 6Z" fill="#e6a92e" stroke="#a87418" stroke-width="3"/><ellipse cx="22" cy="0" rx="8" ry="20" fill="#c48d1f"/><rect x="-36" y="-6" width="10" height="12" rx="3" fill="#a87418"/><path d="M-18 8 L-22 26 M-8 6 L-10 26" stroke="#b5413a" stroke-width="4"/>`,
+ fish:`<path d="M-30 0 Q-6 -24 22 0 Q-6 24 -30 0Z" fill="#6fa8d4" stroke="#3e6fa3" stroke-width="3"/><path d="M20 0 L36 -14 V14Z" fill="#3e6fa3"/><circle cx="-16" cy="-4" r="4" fill="#1b1840"/><path d="M-2 -12 Q4 0 -2 12" stroke="#3e6fa3" stroke-width="3" fill="none"/>`,
+ donkey:`<path d="M-14 -20 L-22 -42 L-6 -24Z M14 -20 L22 -42 L6 -24Z" fill="#8b8178"/><ellipse cy="0" rx="22" ry="26" fill="#a39a90"/><ellipse cy="16" rx="16" ry="12" fill="#d8d0c6"/><circle cx="-9" cy="-4" r="3.5" fill="#1b1840"/><circle cx="9" cy="-4" r="3.5" fill="#1b1840"/><circle cx="-5" cy="16" r="2.5" fill="#6b5f55"/><circle cx="5" cy="16" r="2.5" fill="#6b5f55"/>`,
+ cradle:`<path d="M-30 -6 H30 L24 18 H-24Z" fill="#a8774f" stroke="#6b4a32" stroke-width="3"/><path d="M-34 26 Q0 40 34 26" stroke="#6b4a32" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M-20 18 V24 M20 18 V24" stroke="#6b4a32" stroke-width="5"/><path d="M-24 -6 Q-10 -18 6 -6" fill="#fff8ea" stroke="#d6c3a2" stroke-width="2"/>`,
+ palm:`<rect x="-4" y="-6" width="8" height="40" rx="3" fill="#8a6142"/><path d="M0 -8 Q-24 -28 -36 -8 Q-22 -16 0 -8 Q-10 -34 -26 -38 Q-6 -34 0 -8 Q10 -36 28 -36 Q10 -28 0 -8 Q24 -24 36 -6 Q20 -14 0 -8Z" fill="#7d8f4e"/><circle cx="-6" cy="-4" r="5" fill="#8a3f22"/><circle cx="5" cy="-2" r="5" fill="#8a3f22"/><circle cx="0" cy="4" r="5" fill="#8a3f22"/>`,
+ goat:`<path d="M-10 -22 Q-26 -40 -30 -22 M10 -22 Q26 -40 30 -22" stroke="#8a6142" stroke-width="6" fill="none" stroke-linecap="round"/><ellipse cy="0" rx="18" ry="24" fill="#f3ead8" stroke="#c9b48e" stroke-width="2"/><path d="M-6 22 L0 36 L6 22Z" fill="#e2d5bb"/><circle cx="-7" cy="-4" r="3" fill="#1b1840"/><circle cx="7" cy="-4" r="3" fill="#1b1840"/><path d="M-30 -6 L-18 -2 M30 -6 L18 -2" stroke="#c9b48e" stroke-width="6" stroke-linecap="round"/>`,
+ key:`<circle cx="-16" cy="0" r="14" fill="none" stroke="#c48d1f" stroke-width="8"/><path d="M-2 0 H32 M20 0 V12 M28 0 V10" stroke="#c48d1f" stroke-width="8" stroke-linecap="round"/>`,
+ yarn:`<circle r="26" fill="#d9837d"/><path d="M-24 -8 Q0 -20 24 -8 M-26 4 Q0 -8 26 4 M-20 16 Q0 4 20 16 M-8 -25 Q8 0 -6 25" stroke="#b5413a" stroke-width="3" fill="none"/><path d="M22 14 Q36 22 30 34" stroke="#b5413a" stroke-width="3" fill="none"/>`,
+ star:`<path d="M0 -34 L9 -10 L34 -10 L14 6 L22 32 L0 16 L-22 32 L-14 6 L-34 -10 L-9 -10Z" fill="#ffd27a" stroke="#e6a92e" stroke-width="3" stroke-linejoin="round"/>`,
+ lantern:`<path d="M-6 -36 H6 V-28 H-6Z" fill="#6b4a32"/><path d="M-18 -28 H18 L22 24 H-22Z" fill="#2b2238"/><path d="M-12 -20 H12 L14 18 H-14Z" fill="#ffd27a"/><circle cx="0" cy="2" r="6" fill="#fff3c4"/><path d="M-24 24 H24" stroke="#2b2238" stroke-width="6" stroke-linecap="round"/>`,
+ sheep:`<g fill="#fff"><circle cx="-14" cy="-6" r="13"/><circle cx="2" cy="-12" r="14"/><circle cx="16" cy="-4" r="13"/><circle cx="-8" cy="8" r="13"/><circle cx="10" cy="9" r="13"/></g><ellipse cx="-24" cy="2" rx="10" ry="12" fill="#3a3432"/><circle cx="-26" cy="0" r="2.5" fill="#fff"/><path d="M-8 20 V32 M10 20 V32" stroke="#3a3432" stroke-width="5" stroke-linecap="round"/>`,
+ ox:`<path d="M-18 -18 Q-36 -24 -34 -40 M18 -18 Q36 -24 34 -40" stroke="#f3ead8" stroke-width="7" fill="none" stroke-linecap="round"/><ellipse cy="0" rx="24" ry="26" fill="#8a5d3a"/><ellipse cy="16" rx="18" ry="12" fill="#d9a77a"/><circle cx="-10" cy="-4" r="3.5" fill="#1b1840"/><circle cx="10" cy="-4" r="3.5" fill="#1b1840"/><circle cx="-6" cy="16" r="2.5" fill="#6b4627"/><circle cx="6" cy="16" r="2.5" fill="#6b4627"/>`,
+};
+const icSVG=(k,size=96,ring="#b5413a")=>`<svg viewBox="-50 -50 100 100" width="${size}" height="${size}" aria-hidden="true"><circle r="46" fill="#fff8ea" stroke="${ring}" stroke-width="5"/>${IC[k]}</svg>`;
+
+/* ===================== CARTE ===================== */
+const P=[[200,520],[540,620],[290,760],[560,900],[600,1080],[270,1220],[530,1380],[250,1540],[520,1700],[270,1860],[550,2010],[300,2160],[560,2300],[400,2500]];
+function smoothPath(pts){let d=`M${pts[0][0]} ${pts[0][1]}`;
+  for(let i=0;i<pts.length-1;i++){const p0=pts[i-1]||pts[i],p1=pts[i],p2=pts[i+1],p3=pts[i+2]||p2;
+    const c1=[p1[0]+(p2[0]-p0[0])/6,p1[1]+(p2[1]-p0[1])/6],c2=[p2[0]-(p3[0]-p1[0])/6,p2[1]-(p3[1]-p1[1])/6];
+    d+=` C${c1[0].toFixed(1)} ${c1[1].toFixed(1)} ${c2[0].toFixed(1)} ${c2[1].toFixed(1)} ${p2[0]} ${p2[1]}`}return d}
+let rnd=(s=>()=>(s=(s*16807)%2147483647)/2147483647)(11);
+function house(x,y,s=1,c="#e8c9a0"){return `<g transform="translate(${x} ${y}) scale(${s})"><rect x="-40" y="-34" width="80" height="60" rx="4" fill="${c}"/><rect x="-44" y="-40" width="88" height="10" rx="3" fill="#c99467"/><rect x="-10" y="-6" width="20" height="32" rx="10" fill="#6b4a32"/><rect x="-32" y="-22" width="14" height="12" rx="3" fill="#5d3b29"/><rect x="18" y="-22" width="14" height="12" rx="3" fill="#5d3b29"/></g>`}
+function palm(x,y,s=1){return `<g transform="translate(${x} ${y}) scale(${s})"><g class="sway"><path d="M0 0 Q4 -50 0 -90" stroke="#8a6142" stroke-width="9" fill="none" stroke-linecap="round"/><path d="M0 -90 Q-40 -110 -64 -80 Q-36 -94 0 -90 Q-20 -130 -50 -136 Q-14 -124 0 -90 Q18 -132 52 -132 Q18 -120 0 -90 Q40 -106 62 -76 Q34 -92 0 -90Z" fill="#6e8044"/></g></g>`}
+function olive(x,y,s=1){return `<g transform="translate(${x} ${y}) scale(${s})"><rect x="-5" y="-10" width="10" height="40" fill="#6b4a32"/><ellipse cx="0" cy="-26" rx="40" ry="28" fill="#7d8f4e"/><ellipse cx="-20" cy="-14" rx="22" ry="16" fill="#6e8044"/><ellipse cx="22" cy="-16" rx="24" ry="18" fill="#8a9c58"/></g>`}
+function sheep(x,y){return `<g transform="translate(${x} ${y})"><g class="hop" style="animation-delay:${(rnd()*2).toFixed(2)}s"><g fill="#fff"><circle cx="-10" cy="-6" r="10"/><circle cx="3" cy="-10" r="11"/><circle cx="14" cy="-4" r="10"/><circle cx="2" cy="2" r="11"/></g><ellipse cx="-20" cy="-2" rx="7" ry="9" fill="#3a3432"/><path d="M-4 10 V18 M8 10 V18" stroke="#3a3432" stroke-width="4"/></g></g>`}
+
+function buildMap(){
+  const cur=todayN();
+  const road=smoothPath(P);
+  let stars="";for(let i=0;i<180;i++){const y=rnd()*420,x=-1200+rnd()*3200;stars+=`<circle class="tw" style="animation-delay:${(rnd()*2.4).toFixed(2)}s" cx="${x.toFixed(0)}" cy="${y.toFixed(0)}" r="${(1+rnd()*2).toFixed(1)}" fill="#fff"/>`}
+  let stars2="";for(let i=0;i<150;i++){const y=2330+rnd()*370,x=-1200+rnd()*3200;stars2+=`<circle class="tw" style="animation-delay:${(rnd()*2.4).toFixed(2)}s" cx="${x.toFixed(0)}" cy="${y.toFixed(0)}" r="${(1+rnd()*1.8).toFixed(1)}" fill="#fff" opacity=".8"/>`}
+  let stations="";
+  DAYS.forEach((d,i)=>{const [x,y]=P[i];const ok=isOpen(d),isT=d.n===cur;const ring=isT?"#e6a92e":ok?"#b5413a":"#a99a85";
+    const label=ok?esc(d.nom):d.jour.split(" ").slice(0,3).join(" ");
+    stations+=`<g class="st ${ok?"open":"locked"} ${isT?"today":""}" data-n="${d.n}" tabindex="0" role="button" aria-label="Jour ${d.n} : ${ok?esc(d.titre):"verrouillé jusqu'au "+d.jour}" transform="translate(${x} ${y})">
+      ${isT?`<circle class="halo" r="54" fill="none" stroke="#ffd27a" stroke-width="6"/>`:""}
+      <g class="med">
+        <ellipse cy="52" rx="40" ry="9" fill="#000" opacity=".15"/>
+        <circle class="ring" r="50" fill="#fff8ea" stroke="${ring}" stroke-width="7"/>
+        <g ${ok?"":'opacity=".28"'}>${IC[d.ic]}</g>
+        ${ok?"":`<g transform="translate(0 4)"><rect x="-15" y="-6" width="30" height="24" rx="5" fill="#7b6a5d"/><path d="M-9 -6 V-14 Q0 -26 9 -14 V-6" stroke="#7b6a5d" stroke-width="5" fill="none"/></g>`}
+        <circle cx="36" cy="-36" r="16" fill="${ring}"/><text x="36" y="-30" text-anchor="middle" font-family="Fredoka,sans-serif" font-weight="700" font-size="17" fill="#fff">${d.n}</text>
+      </g>
+      <g transform="translate(0 76)"><rect x="${-Math.max(56,label.length*7)}" y="-18" width="${Math.max(112,label.length*14)}" height="36" rx="18" fill="${ok?"#fff8ea":"rgba(255,248,234,.55)"}"/>
+      <text text-anchor="middle" y="8" font-family="Fredoka,sans-serif" font-weight="600" font-size="23" fill="#2b2238">${label}</text></g>
+    </g>`});
+  const svg=`
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1b1840"/><stop offset=".09" stop-color="#2e2a6b"/><stop offset=".16" stop-color="#8a4f7d"/><stop offset=".21" stop-color="#e59a7e"/>
+      <stop offset=".26" stop-color="#f1d9ae"/><stop offset=".7" stop-color="#efcf98"/><stop offset=".78" stop-color="#e59a7e"/><stop offset=".84" stop-color="#8a4f7d"/><stop offset=".9" stop-color="#2e2a6b"/><stop offset="1" stop-color="#1b1840"/>
+    </linearGradient>
+    <radialGradient id="sg"><stop offset="0" stop-color="#fff3c4" stop-opacity=".9"/><stop offset="1" stop-color="#fff3c4" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect x="-1200" width="3200" height="2700" fill="url(#bg)"/>
+  ${stars}
+  <circle cx="660" cy="110" r="34" fill="#fff3c4"/><circle cx="676" cy="100" r="30" fill="#2a2660"/>
+  <!-- collines de Nazareth -->
+  <path d="M-1200 450 Q-1000 400 -800 450 T-400 440 T0 470 Q200 380 420 450 T800 420 T1200 450 T1600 430 T2000 450 V640 H-1200Z" fill="#b98a6a"/>
+  <path d="M-1200 560 Q-900 500 -600 560 T0 560 Q260 480 520 560 T800 540 T1300 560 T2000 540 V700 H-1200Z" fill="#d6a679"/>
+  ${house(-160,520,.85)}${house(-420,560,.9,"#efd3ab")}${olive(-280,610,.9)}${house(980,510,.9,"#efd3ab")}${house(1230,560,.85)}${olive(1100,620,.9)}${olive(-620,520,.8)}${house(1420,500,.8)}
+  ${house(90,500,.9)}${house(330,470,.8,"#efd3ab")}${house(420,560,.95)}${olive(640,520,1)}${olive(110,640,.8)}
+  <!-- nuages -->
+  <g opacity=".85"><g class="cloud"><ellipse cx="0" cy="700" rx="70" ry="22" fill="#fff"/><ellipse cx="40" cy="688" rx="46" ry="22" fill="#fff"/></g>
+  <g class="cloud" style="animation-delay:-19s;animation-duration:52s"><ellipse cx="0" cy="1180" rx="60" ry="18" fill="#fff"/><ellipse cx="34" cy="1170" rx="40" ry="18" fill="#fff"/></g></g>
+  <!-- Jourdain -->
+  <path d="M1400 600 Q1050 620 800 700 Q700 760 730 880 Q760 1000 700 1110 Q650 1210 720 1300 Q780 1380 900 1420 Q1150 1480 1500 1470" stroke="#6fa8d4" stroke-width="58" fill="none" stroke-linecap="round"/>
+  <path class="flow" d="M1400 600 Q1050 620 800 700 Q700 760 730 880 Q760 1000 700 1110 Q650 1210 720 1300 Q780 1380 900 1420 Q1150 1480 1500 1470" stroke="#cfe5f5" stroke-width="4" fill="none" stroke-dasharray="20 40" opacity=".8"/>
+  <text x="742" y="1010" font-family="Fredoka,sans-serif" font-size="20" fill="#3e6fa3" transform="rotate(84 742 1010)">Le Jourdain</text>
+  <!-- roseaux -->
+  <g stroke="#6e8044" stroke-width="4" stroke-linecap="round"><path d="M660 940 v-30 M668 944 v-38 M676 940 v-26"/><path d="M640 1240 v-30 M648 1244 v-40 M656 1240 v-28"/></g>
+  <!-- campement -->
+  <g transform="translate(120 1250)"><path d="M-60 40 L0 -40 L60 40Z" fill="#c0603c"/><path d="M0 -40 L0 40 L-20 40Z" fill="#8f3f22"/><g transform="translate(90 30)"><path d="M-14 0 L0 -26 L14 0Z" fill="#e6a92e"/><path d="M-8 0 L0 -16 L8 0Z" fill="#ffd27a" class="glow"/></g></g>
+  <!-- Jéricho : palmiers -->
+  ${palm(680,1470,1)}${palm(730,1440,.8)}${palm(380,1450,.75)}
+  <!-- désert -->
+  <path d="M-1200 1560 Q-1050 1480 -900 1560 T-600 1550 T-300 1560 T0 1560 Q150 1480 300 1560 T600 1540 T800 1520 T1200 1550 T1600 1530 T2000 1550 V1660 Q500 1600 -1200 1660Z" fill="#e2b77c" opacity=".7"/>
+  ${palm(-120,1470,.9)}${palm(-380,1500,.7)}${palm(1000,1520,.9)}${palm(1250,1480,.75)}${olive(-260,1300,.8)}${olive(1120,1260,.8)}
+  ${palm(90,1500,.6)}
+  <!-- Jérusalem -->
+  <g transform="translate(560 1810)">
+    <rect x="-200" y="-70" width="400" height="90" fill="#d8b48a"/>
+    ${[-200,-140,-80,-20,40,100,160].map(x=>`<rect x="${x}" y="-86" width="30" height="18" fill="#d8b48a"/>`).join("")}
+    <rect x="-210" y="-120" width="60" height="140" fill="#c99d6e"/><rect x="150" y="-120" width="60" height="140" fill="#c99d6e"/>
+    <path d="M-30 20 V-30 Q0 -60 30 -30 V20Z" fill="#6b4a32"/>
+    <ellipse cx="0" cy="-130" rx="60" ry="46" fill="#e6a92e"/><rect x="-66" y="-130" width="132" height="60" fill="#d8b48a"/>
+  </g>
+  <text x="560" y="1930" text-anchor="middle" font-family="Fredoka,sans-serif" font-weight="600" font-size="22" fill="#6b4a32" opacity=".8">Jérusalem</text>
+  <!-- champs des bergers -->
+  <path d="M-1200 2240 Q300 2170 2000 2240 V2430 H-1200Z" fill="#9aa865" opacity=".55"/>
+  ${sheep(-120,2280)}${sheep(-60,2320)}${sheep(-380,2300)}${sheep(940,2290)}${sheep(1000,2330)}${sheep(1240,2300)}
+  ${sheep(700,2260)}${sheep(740,2300)}${sheep(660,2320)}${sheep(110,2280)}${sheep(160,2310)}
+  ${stars2}
+  <!-- Bethléem -->
+  ${house(120,2420,.8,"#c9a986")}${house(680,2430,.85,"#c9a986")}${house(-180,2440,.85,"#c9a986")}${house(-420,2420,.75,"#c9a986")}${house(960,2440,.8,"#c9a986")}${house(1220,2420,.9,"#c9a986")}
+  <!-- étable -->
+  <g transform="translate(400 2620)">
+    <circle cy="-250" r="110" fill="url(#sg)" class="glow"/>
+    <path d="M0 -284 L12 -258 L40 -256 L18 -238 L26 -210 L0 -226 L-26 -210 L-18 -238 L-40 -256 L-12 -258Z" fill="#ffd27a"/>
+    <path d="M0 -226 L0 -120" stroke="#ffd27a" stroke-width="3" opacity=".5" stroke-dasharray="4 8"/>
+    <path d="M-150 -40 L0 -130 L150 -40Z" fill="#6b4a32"/><rect x="-130" y="-40" width="260" height="110" fill="#8a6142"/><rect x="-90" y="-20" width="180" height="90" fill="#2a1a12"/>
+    <path d="M-40 50 L-30 20 H30 L40 50Z" fill="#c99467"/><path d="M-30 22 Q0 10 30 22" stroke="#e6c28c" stroke-width="6"/>
+  </g>
+  <text x="400" y="2690" text-anchor="middle" font-family="Fredoka,sans-serif" font-weight="600" font-size="24" fill="#ffd27a">Bethléem</text>
+  <!-- route -->
+  <path d="${road}" stroke="#f6e3bf" stroke-width="34" fill="none" stroke-linecap="round" opacity=".9"/>
+  <path id="road" d="${road}" stroke="#c9a06a" stroke-width="4" fill="none" stroke-dasharray="2 16" stroke-linecap="round"/>
+  ${stations}
+  <g id="pion"><g class="walk"><ellipse cy="40" rx="30" ry="7" fill="#000" opacity=".2"/>
+    <g transform="translate(-14 0)"><path d="M-14 38 Q-18 -10 0 -18 Q18 -10 14 38Z" fill="#5a4636"/><circle cy="-28" r="12" fill="#5a4636"/><circle cx="-18" cy="-6" r="14" fill="#a8774f"/></g>
+    <g transform="translate(16 2)"><path d="M-12 36 Q-18 0 -8 -14 Q0 -22 10 -14 Q16 4 22 14 Q18 30 12 36Z" fill="#3e6fa3"/><ellipse cx="12" cy="12" rx="12" ry="14" fill="#3e6fa3"/><circle cy="-26" r="11" fill="#3e6fa3"/></g>
+  </g></g>`;
+  $("map").innerHTML=svg;fitMap();
+  placePion(cur);
+  $("map").querySelectorAll(".st").forEach(g=>{
+    const go=()=>{const d=DAYS[g.dataset.n-1];if(isOpen(d)){location.hash="jour-"+d.n}else{g.classList.remove("shake");void g.getBBox();g.classList.add("shake");tip(`Patience ! ${d.n===14?"Le dernier témoin":"Ce témoin"} arrive le ${d.jour}.`)}};
+    g.addEventListener("click",go);g.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();go()}})});
+}
+function fitMap(){const W=document.documentElement.clientWidth||innerWidth;const s=W<=800?W/800:Math.min(1.12,Math.max(1,W/1500));
+  const vbw=Math.min(3200,W/s);$("map").setAttribute("viewBox",`${(-(vbw-800)/2).toFixed(1)} 0 ${vbw.toFixed(1)} 2700`)}
+addEventListener("resize",fitMap);
+function stationLen(n){const road=$("road");const L=road.getTotalLength();if(n<=0)return 0;
+  // find length nearest to station n
+  const [tx,ty]=P[n-1];let best=0,bd=1e9;for(let l=0;l<=L;l+=6){const p=road.getPointAtLength(l);const dd=(p.x-tx)**2+(p.y-ty)**2;if(dd<bd){bd=dd;best=l}}return best}
+function placePion(cur){
+  const road=$("road"),pion=$("pion");
+  if(cur===0){pion.setAttribute("transform","translate(110 430) scale(.9)");return}
+  const end=stationLen(cur),start=cur>1?stationLen(cur-1):0;
+  const at=l=>{const p=road.getPointAtLength(l);pion.setAttribute("transform",`translate(${p.x+62} ${p.y-30}) scale(.9)`)};
+  if(reduce||preview){at(end);return}
+  at(start);const t0=performance.now(),D=2200;
+  requestAnimationFrame(function f(t){const k=Math.min(1,(t-t0)/D),e=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2;at(start+(end-start)*e);if(k<1)requestAnimationFrame(f)});
+}
+let lastDay=0;
+function scrollToToday(smooth,n){const cur=n||todayN();if(!cur)return;const st=$("map").querySelector(`.st[data-n="${cur}"]`);if(!st)return;
+  const r=st.getBoundingClientRect();window.scrollTo({top:window.scrollY+r.top-innerHeight/2+r.height/2,behavior:smooth&&!reduce?"smooth":"auto"})}
+
+/* ===================== PETITS EFFETS ===================== */
+let tipT;function tip(t){const e=$("tip");e.textContent=t;e.classList.add("on");clearTimeout(tipT);tipT=setTimeout(()=>e.classList.remove("on"),2600)}
+function sparkle(el){if(reduce)return;const r=el.getBoundingClientRect();const cols=["#ffd27a","#e6a92e","#b5413a","#6fa8d4","#fff"];
+  for(let i=0;i<26;i++){const s=document.createElement("span");s.className="spark";const a=Math.random()*Math.PI*2,d=60+Math.random()*90;
+    s.style.left=(r.left+r.width/2)+"px";s.style.top=(r.top+r.height/2)+"px";s.style.background=cols[i%cols.length];
+    s.style.setProperty("--x",Math.cos(a)*d+"px");s.style.setProperty("--y",Math.sin(a)*d+"px");document.body.appendChild(s);setTimeout(()=>s.remove(),950)}}
+
+/* ===================== PAGE DU JOUR ===================== */
+function heroHTML(n,inner){
+  const sky=n===0?["#1b1840","#2e2a6b","#8a4f7d"]:n<=3?["#2e2a6b","#8a4f7d","#e59a7e"]:n<=11?["#7cb6dd","#bcd9ea","#f6e2b8"]:n<=12?["#8a4f7d","#c46a7a","#f0b088"]:["#1b1840","#2e2a6b","#5a3f7a"];
+  const night=n===0||n>=13||n<=1;
+  let st="";if(night)for(let i=0;i<40;i++)st+=`<circle class="tw" style="animation-delay:${(Math.random()*2.4).toFixed(2)}s" cx="${(Math.random()*1600).toFixed(0)}" cy="${(Math.random()*260).toFixed(0)}" r="${(1+Math.random()*2).toFixed(1)}" fill="#fff"/>`;
+  const ground=n>=4&&n<=11?"#e2b77c":"#b98a6a";
+  return `<div class="dhero ${n>=4&&n<=11?"day":""}"><svg class="deco" viewBox="0 0 1600 500" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <defs><linearGradient id="hs${n}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${sky[0]}"/><stop offset=".6" stop-color="${sky[1]}"/><stop offset="1" stop-color="${sky[2]}"/></linearGradient></defs>
+    <rect width="1600" height="500" fill="url(#hs${n})"/>${st}
+    ${night?'<circle cx="1360" cy="90" r="36" fill="#fff3c4"/><circle cx="1376" cy="80" r="32" fill="'+sky[0]+'"/>':'<circle cx="1320" cy="120" r="60" fill="#ffd27a" class="glow"/>'}
+    <g class="cloud" style="animation-duration:70s"><ellipse cx="200" cy="140" rx="80" ry="22" fill="#fff" opacity=".5"/><ellipse cx="250" cy="128" rx="54" ry="22" fill="#fff" opacity=".5"/></g>
+    <path d="M0 400 Q200 330 420 380 T860 360 T1300 380 T1600 360 V500 H0Z" fill="${ground}" opacity=".9"/>
+    <path d="M0 450 Q400 410 800 445 T1600 440 V500 H0Z" fill="var(--paper)"/>
+  </svg>${inner?`<div class="head">${inner}</div>`:""}</div>`;
+}
+const CY=[["Cycle 1","PS · MS · GS","var(--c1)"],["Cycle 2","CP · CE1 · CE2","var(--c2)"],["Cycle 3","CM1 · CM2","var(--c3)"]];
+function dayHTML(d){
+  const n=d.n,got=letterShown(d);
+  const prevOk=n>1&&isOpen(DAYS[n-2]),nextOk=n<14&&isOpen(DAYS[n]);
+  const vid=d.video?`<video controls preload="metadata" playsinline src="${d.video}"></video>`:`<div class="novid">La vidéo du témoin<br>arrive bientôt…</div>`;
+  const cards=d.c.map((q,i)=>`<button class="flip" style="--k:${CY[i][2]}" aria-label="${CY[i][0]} : retourner la carte"><span class="in">
+      <span class="face front"><b>${CY[i][0]}</b><small>${CY[i][1]}</small><span class="tap">Touche pour retourner</span></span>
+      <span class="face back"><b>${CY[i][0]}</b><p>${esc(q)}</p></span></span></button>`).join("");
+  let final="";
+  if(n===14){
+    const ws=PHRASE.split(" ").map(w=>`<div class="w">${[...w].map(c=>`<span>${c}</span>`).join("")}</div>`).join("");
+    final=`<div class="sec"><h3>Le message des 14 témoins</h3>
+      <div class="creche" id="creche"><svg viewBox="0 0 800 420" aria-hidden="true">
+        ${Array.from({length:30},()=>`<circle class="tw" style="animation-delay:${(Math.random()*2).toFixed(2)}s" cx="${(Math.random()*800).toFixed(0)}" cy="${(Math.random()*180).toFixed(0)}" r="${(1+Math.random()*2).toFixed(1)}" fill="#fff"/>`).join("")}
+        <circle cx="400" cy="70" r="70" fill="#fff3c4" opacity=".25" class="glow"/><path d="M400 36 L410 60 L436 62 L416 78 L423 104 L400 90 L377 104 L384 78 L364 62 L390 60Z" fill="#ffd27a"/>
+        <path d="M220 420 V230 L400 140 L580 230 V420Z" fill="#6b4a32"/><path d="M250 420 V250 H550 V420Z" fill="#2a1a12"/>
+        <g transform="translate(310 360)">${IC.ox}</g><g transform="translate(492 360) scale(-1 1)">${IC.donkey}</g>
+        <g transform="translate(345 300)"><path d="M-14 70 Q-18 10 0 0 Q18 10 14 70Z" fill="#5a4636"/><circle cy="-12" r="12" fill="#5a4636"/></g>
+        <g transform="translate(455 310)"><path d="M-14 60 Q-18 8 0 0 Q18 8 14 60Z" fill="#3e6fa3"/><circle cy="-12" r="11" fill="#3e6fa3"/></g>
+        <path d="M360 410 L370 372 H430 L440 410Z" fill="#c99467"/><path d="M370 374 Q400 362 430 374" stroke="#e6c28c" stroke-width="7"/>
+        <circle cx="400" cy="372" r="30" fill="#fff3c4" opacity=".25" class="glow"/>
+      </svg>
+      <div class="curtain">${got?"Touche le rideau pour découvrir la crèche":"Le rideau se lève tous ensemble, devant la crèche de l'école…"}</div></div>
+      <div class="phrase" aria-label="${got?PHRASE:"message caché"}">${got?ws:""}</div>
+      ${got?`<p class="finaltext" id="ft" hidden>La mangeoire est vide… et pourtant il est parmi nous : dans tout ce que nous avons donné, fabriqué et partagé pendant ces trois semaines. Ce bébé, c'est Jésus, que l'on attend à Noël. On l'appelle aussi Emmanuel : « Dieu avec nous ».</p>`:""}
+    </div>`}
+  return `<div class="close"><div><button class="pill" data-act="close">← La carte</button>
+      <div class="navs"><button class="pill" data-go="${n-1}" ${prevOk?"":"disabled"} aria-label="Jour précédent">←</button><span class="pill" aria-hidden="true">${n} / 14</span><button class="pill" data-go="${n+1}" ${nextOk?"":"disabled"} aria-label="Jour suivant">→</button></div></div></div>
+    ${heroHTML(n,`<span class="pop">${icSVG(d.ic,150)}</span><div class="rise"><div class="k">Jour ${n} · ${esc(d.jour)} · ${esc(d.lieu)}</div><h2>${esc(d.titre)}</h2></div>`)}
+    <div class="pg">
+    <div class="frame rise" style="animation-delay:.1s">${vid}</div>
+    <div class="sec rise" style="animation-delay:.18s"><button class="scroll" aria-expanded="false"><span class="bar">Lire le témoignage</span></button>
+      <div class="scrolltext"><div><p>${esc(d.texte)}</p></div></div></div>
+    <div class="sec rise" style="animation-delay:.26s"><h3>Les énigmes du jour</h3><p class="hint">Chaque classe retourne la carte de son cycle.</p><div class="cards">${cards}</div></div>
+    <div class="sec rise" style="animation-delay:.34s"><h3>Le défi du jour</h3>
+      <button class="env" aria-label="Ouvrir l'enveloppe du défi"><div class="envbox"><span class="seal">Défi</span><div class="envlabel">Touche le sceau pour ouvrir</div>
+      <div class="letter"><h3>${esc(d.defi)}</h3><p>${esc(d.defit)}</p></div></div></button></div>
+    <div class="sec rise" style="animation-delay:.42s"><h3>La lettre du jour</h3>
+      <div class="tilewrap"><button class="tile ${got?"":"nope"}" aria-label="${got?"Retourner la lettre":"Lettre pas encore disponible"}"><span class="in"><span class="f">?</span><span class="b">${got?d.lettre:""}</span></span></button>
+      <p class="hint" style="font-size:15px">${got?"Touche la tuile pour découvrir la lettre, puis ajoute-la à ton carnet !":n===14?"Elle se révèle tous ensemble, devant la crèche.":"Trouve-la d'abord en classe ! Elle s'affichera ici à 16 h 30."}</p></div></div>
+    ${final}</div>`;
+}
+function carnetHTML(){
+  let i=0,cells="";
+  const words=PHRASE.split(" ").map(w=>{let row="";for(const ch of w){const d=DAYS[i++];const g=letterShown(d);row+=`<div class="cell ${g?"got":""}" style="animation-delay:${i*0.06}s">${g?ch:`<small>j.${d.n}</small>`}</div>`}return `<div class="grid" style="grid-template-columns:repeat(${Math.max(5,w.length)},minmax(0,56px))">${row}</div>`}).join("");
+  const nb=DAYS.filter(letterShown).length;
+  return `<div class="close"><div><button class="pill" data-act="close">← La carte</button><span class="pill">${nb} / 14 lettres</span></div></div>
+    ${heroHTML(0,`<span class="pop">${icSVG("book",150,"#e6a92e")}</span><div class="rise"><div class="k">Mon carnet d'enquêteur</div><h2>Le message mystère</h2></div>`)}
+    <div class="pg"><div style="background:var(--paper);border-radius:22px;padding:22px;box-shadow:0 10px 30px rgba(0,0,0,.12)">
+    <p class="hint rise">Chaque témoin donne une lettre. Mises bout à bout, elles forment un message… mais lequel ?</p>
+    <div class="words rise" style="margin-top:16px">${words}</div></div></div>`;
+}
+function wireBook(){
+  const b=$("book");
+  b.querySelectorAll("[data-act=close]").forEach(x=>x.onclick=()=>{history.pushState("",document.title,location.pathname+location.search);route()});
+  b.querySelectorAll("[data-go]").forEach(x=>x.onclick=()=>{location.hash="jour-"+x.dataset.go});
+  b.querySelectorAll(".flip").forEach(x=>x.onclick=()=>x.classList.toggle("on"));
+  const sc=b.querySelector(".scroll");if(sc)sc.onclick=()=>{const on=sc.getAttribute("aria-expanded")!=="true";sc.setAttribute("aria-expanded",on);sc.nextElementSibling.classList.toggle("on",on)};
+  const env=b.querySelector(".env");if(env)env.onclick=()=>{if(!env.classList.contains("on")){env.classList.add("on");sparkle(env.querySelector(".envbox"))}};
+  const tile=b.querySelector(".tile");if(tile)tile.onclick=()=>{if(tile.classList.contains("nope")){tip("Pas encore ! Trouvez d'abord la lettre en classe.");return}
+    if(!tile.classList.contains("on")){tile.classList.add("on");setTimeout(()=>sparkle(tile),350);updateCount()}};
+  const cr=b.querySelector("#creche");if(cr&&b.querySelector("#ft")!==null){cr.onclick=()=>{if(cr.classList.contains("open"))return;cr.classList.add("open");
+    b.querySelectorAll(".phrase .w span").forEach((s,i)=>s.style.animationDelay=(1.2+i*0.12)+"s");const ft=b.querySelector("#ft");setTimeout(()=>{ft.hidden=false;ft.classList.add("rise");sparkle(cr)},1300+PHRASE.length*120)}}
+}
+function openBook(html,label){const ov=$("ov"),b=$("book");b.innerHTML=html;b.setAttribute("aria-label",label);b.scrollTop=0;wireBook();
+  ov.classList.add("on");ov.setAttribute("aria-hidden","false");document.body.style.overflow="hidden"}
+function closeBook(){const ov=$("ov");ov.classList.remove("on");ov.setAttribute("aria-hidden","true");document.body.style.overflow="";
+  $("book").querySelectorAll("video").forEach(v=>v.pause())}
+$("ov").addEventListener("click",e=>{if(e.target.id==="ov"){history.pushState("",document.title,location.pathname+location.search);route()}});
+addEventListener("keydown",e=>{if(e.key==="Escape"&&$("ov").classList.contains("on")){history.pushState("",document.title,location.pathname+location.search);route()}});
+
+/* ===================== ROUTAGE ===================== */
+function route(){
+  const m=location.hash.match(/^#jour-(\d+)$/);
+  if(m){const d=DAYS[+m[1]-1];if(d&&isOpen(d)){lastDay=d.n;openBook(dayHTML(d),d.titre);return}
+    if(d){tip(`Patience ! Ce témoin arrive le ${d.jour}.`)}history.replaceState("",document.title,location.pathname+location.search)}
+  if(location.hash==="#carnet"){openBook(carnetHTML(),"Mon carnet");return}
+  const wasOpen=$("ov").classList.contains("on");closeBook();if(wasOpen)scrollToToday(false,lastDay);
+}
+function updateCount(){$("cnt").textContent=DAYS.filter(letterShown).length}
+function init(){
+  const cur=todayN();
+  $("intro").textContent=cur===0?"Rendez-vous le lundi 30 novembre pour rencontrer le premier témoin !":"Deux voyageurs ont quitté Nazareth avec un gros baluchon. Où vont-ils ? Suivez leur route, un témoin par jour.";
+  buildMap();updateCount();
+  const tb=$("todaybtn");tb.hidden=cur===0;tb.onclick=()=>{location.hash="jour-"+cur};
+  $("carnetbtn").onclick=()=>{location.hash="carnet"};
+  document.querySelector(".previewbtn")?.remove();
+  if(preview){const b=document.createElement("button");b.className="previewbtn";b.textContent="Mode aperçu · quitter";b.onclick=()=>{try{localStorage.removeItem("avent-apercu")}catch(e){}preview=false;init()};document.body.appendChild(b)}
+  route();
+}
+/* À l'arrivée sur le site : on ouvre directement le témoin du jour */
+if(!location.hash&&!preview&&todayN()>0)history.replaceState(null,"","#jour-"+todayN());
+let clicks=0,ct;$("eb").addEventListener("click",()=>{clicks++;clearTimeout(ct);ct=setTimeout(()=>clicks=0,900);if(clicks>=3){clicks=0;preview=true;try{localStorage.setItem("avent-apercu","1")}catch(e){}init();tip("Mode aperçu : tous les jours sont ouverts")}});
+addEventListener("hashchange",route);
+init();
+if(!location.hash)setTimeout(()=>scrollToToday(true),600);
+</script>
+</body>
+</html>
