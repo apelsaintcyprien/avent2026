@@ -3,6 +3,7 @@
 De Nazareth à la crèche : 14 témoins, 14 énigmes, une lettre par jour (30 novembre → 17 décembre).
 
 ## Contenu
+- [`plan-de-travail.md`](plan-de-travail.md) : le document de l'équipe (déroulé, témoins, énigmes, corrigé, textes des audios)
 - `index.html` : tout le site (carte illustrée + une page par jour)
 - `videos/` : une vidéo par témoin, nommées `temoin-01.mp4` … `temoin-14.mp4`
 
