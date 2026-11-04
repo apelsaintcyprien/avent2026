@@ -192,7 +192,7 @@ Les cycles : **Cycle 1** pour PS, MS et GS · **Cycle 2** pour CP, CE1 et CE2 ·
 
 ## À préparer
 
-- [x] Vidéos n°1 (Rachel), n°3 (le crieur), n°4 (le pêcheur), n°5 (Bourricot)
+- [x] Vidéos n°1 et n°3 à n°9 (Rachel, le crieur, le pêcheur, Bourricot, Tobie, Myriam, Élie, le gardien)
 - [ ] Les 13 autres enregistrements audio, puis les vidéos, à boucler avant le 27 novembre
 - [ ] La carte du voyage, remise par Père Claude le 1er décembre
 - [ ] Les fiches énigmes par cycle pour les 16 classes
