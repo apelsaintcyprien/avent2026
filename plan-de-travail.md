@@ -193,7 +193,7 @@ Les cycles : **Cycle 1** pour PS, MS et GS · **Cycle 2** pour CP, CE1 et CE2 ·
 ## À préparer
 
 - [x] Vidéos n°1 et n°3 à n°14 (il ne manque que Père Claude, n°2)
-- [ ] L'enregistrement de Père Claude (n°2), puis sa vidéo, à boucler avant le 27 novembre
+- [x] Père Claude (n°2) : pas de vidéo, il vient en personne à l'école le mardi 1er décembre
 - [ ] La carte du voyage, remise par Père Claude le 1er décembre
 - [ ] Les fiches énigmes par cycle pour les 16 classes
 - [ ] Un carnet d'enquêteur par enfant ou par équipe (grille de 14 lettres)
@@ -209,7 +209,7 @@ Ces textes sont écrits pour être dits à voix haute, en 35 secondes environ ch
 
 | N° | Témoin | Voix conseillée |
 | --- | --- | --- |
-| 2 | Père Claude | Lui-même, enregistré au téléphone : c'est encore mieux |
+| 2 | Père Claude | Pas d'enregistrement : il intervient en personne à l'école |
 | 3 | Le crieur | Homme, voix forte et théâtrale |
 | 4 | Le pêcheur | Homme âgé, calme et chaleureux |
 | 5 | Bourricot | Voix drôle, un peu nasillarde |

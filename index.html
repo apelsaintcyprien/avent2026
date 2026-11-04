@@ -456,7 +456,7 @@ const CY=[["Cycle 1","PS · MS · GS","var(--c1)"],["Cycle 2","CP · CE1 · CE2"
 function dayHTML(d){
   const n=d.n,got=letterShown(d);
   const prevOk=n>1&&isOpen(DAYS[n-2]),nextOk=n<14&&isOpen(DAYS[n]);
-  const vid=d.video?`<video controls preload="metadata" playsinline src="${d.video}"></video>`:`<div class="novid">La vidéo du témoin<br>arrive bientôt…</div>`;
+  const vid=d.video?`<video controls preload="metadata" playsinline src="${d.video}"></video>`:(d.n===2?`<div class="novid">Aujourd'hui, pas de vidéo :<br>Père Claude vient vous rendre visite<br>en personne à l'école !</div>`:`<div class="novid">La vidéo du témoin<br>arrive bientôt…</div>`);
   const cards=d.c.map((q,i)=>`<button class="flip" style="--k:${CY[i][2]}" aria-label="${CY[i][0]} : retourner la carte"><span class="in">
       <span class="face front"><b>${CY[i][0]}</b><small>${CY[i][1]}</small><span class="tap">Touche pour retourner</span></span>
       <span class="face back"><b>${CY[i][0]}</b><p>${esc(q)}</p></span></span></button>`).join("");
