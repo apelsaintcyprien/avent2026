@@ -4,6 +4,7 @@ Le document de référence de l'équipe pastorale. On y trouve le déroulé jour
 
 - **Le site** : https://apelsaintcyprien.github.io/avent2026/ (une page par jour, déverrouillée à sa date)
 - **Les vidéos** : dossier [`videos/`](videos/)
+- **Le guide des enseignants**, jour par jour : [`guide-enseignants.pdf`](guide-enseignants.pdf)
 
 ## En bref
 
@@ -43,7 +44,8 @@ Remarques de l'équipe pastorale, intégrées dans le tableau ci-dessus et sur l
 - **Énigmes** : pas indispensables, les vidéos se suffisent à elles-mêmes. Libre à chaque enseignant de les utiliser, pour rester dans une réflexion plus spirituelle.
 - **Lettres** : inscrites derrière chaque personnage, installé dans l'école ; le S est découvert le 17 au soir, au temps fort, derrière le bœuf.
 - **Jours encore à valider** (les lignes marquées *Proposition* dans le tableau) : n°2 Père Claude, n°7 Myriam, n°8 Élie, n°12 l'aubergiste.
-- **Textes à réenregistrer** : l'étoile (n°11, « comptez les étoiles de votre couloir ») et Benjamin (n°13, « répétez votre chant de Noël »).
+- **Audios réenregistrés** : l'étoile (n°11, « comptez les étoiles de votre couloir ») et Benjamin (n°13, « répétez votre chant de Noël ») ; les deux vidéos sont refaites.
+- *Proposition d'Adrien :* garder un geste de partage concret, facultatif : des gâteaux préparés en classe et échangés entre classes (recette, pesées, proportions, parts égales), éventuellement sur plusieurs jours. À discuter.
 
 ## Option : les CM2 portent les cadeaux
 
@@ -216,7 +218,7 @@ Les énigmes sont facultatives : chaque enseignant est libre de s'en saisir ou n
 - [ ] Relayer aux garderies le bricolage pour l'Ehpad (semaine du 7 décembre)
 - [ ] Prévenir les collègues : fabrication d'étoiles le 2 décembre
 - [ ] Valider les défis des jours 2, 7, 8 et 12
-- [ ] Réenregistrer les audios de l'étoile (n°11) et de Benjamin (n°13)
+- [x] Réenregistrer les audios de l'étoile (n°11) et de Benjamin (n°13)
 - [ ] Option CM2 : contacter l'Ehpad ou l'Agglo2B
 
 ## Textes des audios
