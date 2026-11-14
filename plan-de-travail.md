@@ -9,30 +9,41 @@ Le document de référence de l'équipe pastorale. On y trouve le déroulé jour
 
 L'enquête dure 14 jours d'école, du lundi 30 novembre au jeudi 17 décembre, pour les 16 classes.
 
-Chaque matin, la vidéo d'un témoin donne un indice sur les deux voyageurs. Ensuite, chaque classe résout l'énigme de son cycle et gagne une lettre. Les jours où le témoin fait une demande, les 16 classes produisent en même temps, et leurs productions remplissent le calendrier inversé, près de la crèche cachée.
+Chaque matin, la vidéo d'un témoin donne un indice sur les deux voyageurs. Le personnage du jour est installé quelque part dans l'école : sa lettre est inscrite derrière lui, et les enfants le cherchent pour la découvrir. Les jours où le témoin fait une demande, les 16 classes la réalisent en même temps. Les énigmes par cycle sont facultatives, et chaque enseignant est libre de s'en saisir ou non.
 
-Le 17, on découvre la crèche et sa mangeoire vide. Les 14 lettres donnent : **IL EST PARMI NOUS**.
+Le 17 au soir, au temps fort, on découvre la crèche et sa mangeoire vide, et la dernière lettre (le S) derrière le bœuf. Les 14 lettres donnent : **IL EST PARMI NOUS**.
 
-**Classes jumelles.** Pour les jours d'échange, on forme 8 binômes, chacun associant une classe de grands et une classe de petits.
+**Vidéos.** Chaque vidéo se termine par quelques secondes de pause, pour laisser aux enfants le temps d'observer et de répondre.
 
 ## Jour par jour
 
 | N° | Date | Témoin | Indice de l'enquête | Lettre | Calendrier inversé (toutes les classes) |
 | --- | --- | --- | --- | --- | --- |
-| 1 | lun. 30 nov. | Rachel, la voisine | Départ de Nazareth, Marie au ventre rond | I | Mots doux : chaque élève écrit ou dessine un souhait pour le baluchon, ouvert le 17 |
-| 2 | mar. 1er déc. | Père Claude | Il confie la carte du voyage | L | Pas de demande : rencontre avec Père Claude |
-| 3 | mer. 2 déc. | Le crieur de l'empereur | La destination : Bethléem | E | Matinée décoration : chaque classe décore sa classe et son couloir |
+| 1 | lun. 30 nov. | Rachel, la voisine | Départ de Nazareth, Marie au ventre rond | I | Mots doux : chaque élève écrit ou dessine un souhait pour le baluchon, ouvert le 17 (prévoir une feuille par élève et le baluchon) |
+| 2 | mar. 1er déc. | Père Claude | Il confie la carte du voyage | L | *Proposition :* chaque classe affiche la carte du voyage et y fait avancer Marie et Joseph chaque matin (Père Claude vient en personne) |
+| 3 | mer. 2 déc. | Le crieur de l'empereur | La destination : Bethléem | E | Matinée décoration : chaque classe décore sa classe et son couloir, et fabrique des étoiles |
 | 4 | jeu. 3 déc. | Le pêcheur | La jeune femme est fatiguée | S | Ramassage des déchets, chaque classe sur sa partie de cour |
 | 5 | ven. 4 déc. | Bourricot, l'âne | « Doucement, Bourricot ! » | T | Un service rendu à l'école, choisi par chaque classe |
-| 6 | lun. 7 déc. | Tobie, l'apprenti | Le berceau oublié | P | Fabriquer un objet à offrir aux résidents d'Ehpad |
-| 7 | mar. 8 déc. | Myriam, la marchande | « Surtout dans ton état ! » | A | Biscuits pour sa classe jumelle |
-| 8 | mer. 9 déc. | Élie, le chevrier | La montée est dure pour elle | R | Cartes d'encouragement pour sa classe jumelle ou le personnel |
-| 9 | jeu. 10 déc. | Le gardien de la porte | Ils filent vers Bethléem | M | Journée du bonjour : les CM2 accueillent au portail, chaque classe salue sa jumelle |
-| 10 | ven. 11 déc. | Anna, la tisserande | Les langes | I | Tisser ensemble : bandes de papier décorées, assemblées en guirlande pour la crèche |
-| 11 | lun. 14 déc. | L'étoile | Elle s'arrête sur un abri | N | Fabriquer des étoiles pour décorer l'école |
-| 12 | mar. 15 déc. | L'aubergiste | Pas de place, l'abri des animaux | O | Faire de la place : chaque classe reçoit sa jumelle pour un moment partagé |
-| 13 | mer. 16 déc. | Benjamin, le berger | Lumière, chants, une grande nouvelle | U | Chaque classe apprend un chant de Noël, chanté à tous le 17 |
-| 14 | jeu. 17 déc. | Le bœuf | La mangeoire est vide ! | S | Les cases pleines entourent la crèche, on ouvre le baluchon, les chants ; Père Claude conclut |
+| 6 | lun. 7 déc. | Tobie, l'apprenti | Le berceau oublié | P | Bricolage libre sur le reste de la semaine : un objet à offrir aux résidents d'Ehpad (relayer l'info aux garderies) |
+| 7 | mar. 8 déc. | Myriam, la marchande | « Surtout dans ton état ! » | A | *Proposition :* à la récré, on partage (prêter un jeu, inviter quelqu'un à jouer) |
+| 8 | mer. 9 déc. | Élie, le chevrier | La montée est dure pour elle | R | *Proposition :* chacun dit ou écrit un petit mot d'encouragement à un camarade |
+| 9 | jeu. 10 déc. | Le gardien de la porte | Ils filent vers Bethléem | M | Chacun fait un effort de bienveillance envers les autres |
+| 10 | ven. 11 déc. | Anna, la tisserande | Les langes | I | Tisser ensemble : bandes de papier décorées ; les guirlandes décorent l'école, puis sont reprises à la célébration |
+| 11 | lun. 14 déc. | L'étoile | Elle s'arrête sur un abri | N | Comptez les étoiles de votre couloir (maternelles : comptez leurs branches) |
+| 12 | mar. 15 déc. | L'aubergiste | Pas de place, l'abri des animaux | O | *Proposition :* personne tout seul, on fait une place à celui qui est seul à la récré ou à la cantine |
+| 13 | mer. 16 déc. | Benjamin, le berger | Lumière, chants, une grande nouvelle | U | Répétez votre chant de Noël |
+| 14 | jeu. 17 déc. | Le bœuf | La mangeoire est vide ! | S | Temps fort du soir : on découvre la crèche et le S derrière le bœuf, on ouvre le baluchon, les chants ; Père Claude conclut |
+
+## Retours de l'équipe (14 novembre)
+
+Remarques de l'équipe pastorale, intégrées dans le tableau ci-dessus et sur le site :
+
+- **Classes jumelles** : abandonnées, trop de contraintes à mettre en place pour les collègues.
+- **Vidéos** : un temps de pause à la fin de chacune, pour observer et répondre.
+- **Énigmes** : pas indispensables, les vidéos se suffisent à elles-mêmes. Libre à chaque enseignant de les utiliser, pour rester dans une réflexion plus spirituelle.
+- **Lettres** : inscrites derrière chaque personnage, installé dans l'école ; le S est découvert le 17 au soir, au temps fort, derrière le bœuf.
+- **Jours encore à valider** (les lignes marquées *Proposition* dans le tableau) : n°2 Père Claude, n°7 Myriam, n°8 Élie, n°12 l'aubergiste.
+- **Textes à réenregistrer** : l'étoile (n°11, « comptez les étoiles de votre couloir ») et Benjamin (n°13, « répétez votre chant de Noël »).
 
 ## Option : les CM2 portent les cadeaux
 
@@ -47,7 +58,7 @@ La visite en Ehpad est la plus marquante si elle est réalisable : il faut conta
 
 Les textes en italique résument chaque témoignage. Les textes complets enregistrés pour les vidéos sont dans la dernière partie, *Textes des audios*.
 
-Les cycles : **Cycle 1** pour PS, MS et GS · **Cycle 2** pour CP, CE1 et CE2 · **Cycle 3** pour CM1 et CM2.
+Les énigmes sont facultatives : chaque enseignant est libre de s'en saisir ou non. Les cycles : **Cycle 1** pour PS, MS et GS · **Cycle 2** pour CP, CE1 et CE2 · **Cycle 3** pour CM1 et CM2.
 
 ### 1 · Rachel, la voisine · lundi 30 novembre, Nazareth
 
@@ -163,9 +174,9 @@ Les cycles : **Cycle 1** pour PS, MS et GS · **Cycle 2** pour CP, CE1 et CE2 ·
 
 ## Le final : la mangeoire vide
 
-1. Toute l'école se rassemble devant la crèche, encore cachée sous son drap. On passe la vidéo du bœuf : il y avait quelqu'un dans sa mangeoire… et ce matin, plus personne.
+1. Le 17 au soir, au temps fort, tout le monde se rassemble devant la crèche, encore cachée sous son drap. On passe la vidéo du bœuf : il y avait quelqu'un dans sa mangeoire… et ce matin, plus personne.
 2. On soulève le drap : Marie, Joseph, l'âne, le bœuf, la guirlande, les étoiles, les cases pleines du calendrier… et la mangeoire vide. On laisse le temps de la surprise.
-3. Les classes lisent leurs lettres. On les accroche une à une jusqu'à lire **IL EST PARMI NOUS**.
+3. On découvre la dernière lettre, le S, derrière le bœuf, puis on accroche les 14 lettres une à une jusqu'à lire **IL EST PARMI NOUS**.
 4. Vient la vraie question : « Comment peut-il être parmi nous, si la mangeoire est vide ? » On laisse les enfants chercher et proposer.
 5. Les pistes à faire émerger : il est dans tout ce qu'on a donné et fabriqué pendant ces trois semaines, dans chaque personne qu'on a accueillie, dans la place qu'on a faite aux autres. On ouvre le baluchon de mots doux.
 6. Père Claude conclut en quelques mots : ce bébé, c'est Jésus, qu'on attend à Noël. On lui donne aussi le nom d'Emmanuel, qui veut dire « Dieu avec nous ». Il sera déposé dans la mangeoire à Noël.
@@ -200,7 +211,12 @@ Les cycles : **Cycle 1** pour PS, MS et GS · **Cycle 2** pour CP, CE1 et CE2 ·
 - [ ] Les 14 cases du calendrier inversé près de la crèche, et le baluchon
 - [ ] La crèche installée sous un drap, mangeoire vide
 - [ ] Le matériel de décoration pour le 2 décembre
-- [ ] Les 8 binômes de classes jumelles
+- [ ] Les 14 personnages à installer dans l'école, avec leur lettre inscrite au dos
+- [ ] Une feuille par élève pour les mots doux, et le baluchon
+- [ ] Relayer aux garderies le bricolage pour l'Ehpad (semaine du 7 décembre)
+- [ ] Prévenir les collègues : fabrication d'étoiles le 2 décembre
+- [ ] Valider les défis des jours 2, 7, 8 et 12
+- [ ] Réenregistrer les audios de l'étoile (n°11) et de Benjamin (n°13)
 - [ ] Option CM2 : contacter l'Ehpad ou l'Agglo2B
 
 ## Textes des audios
@@ -265,7 +281,7 @@ Bonjour, bonjour ! Approchez, regardez mes tissus ! Je suis Anna, la tisserande 
 
 ### 11 · L'étoile
 
-Coucou, là-haut ! Oui, c'est moi, l'étoile ! Vous me voyez ? Je brille plus fort que toutes les autres ! Ce soir, je vais avancer tout doucement dans le ciel… et m'arrêter juste au-dessus d'un endroit très spécial, à Bethléem. Un endroit tout simple, pour se mettre à l'abri… Chut, je n'en dis pas plus ! Suivez-moi bien, les enquêteurs ! Et pour que tout le monde trouve le chemin, il faudrait plein d'étoiles dans votre école… Vous en fabriquez ?
+Coucou, là-haut ! Oui, c'est moi, l'étoile ! Vous me voyez ? Je brille plus fort que toutes les autres ! Ce soir, je vais avancer tout doucement dans le ciel… et m'arrêter juste au-dessus d'un endroit très spécial, à Bethléem. Un endroit tout simple, pour se mettre à l'abri… Chut, je n'en dis pas plus ! Suivez-moi bien, les enquêteurs ! Et pour que tout le monde trouve son chemin dans l'école, il y a déjà plein d'étoiles ! Comptez les étoiles de votre couloir… Combien en voyez-vous ?
 
 ### 12 · L'aubergiste
 
@@ -273,7 +289,7 @@ Complet ! Complet ! Il n'y a plus de place ! Bonjour… pardon, je suis débord�
 
 ### 13 · Benjamin, le berger
 
-Vous ne devinerez jamais ce qui m'est arrivé ! Je m'appelle Benjamin, je suis berger. Cette nuit, on gardait nos moutons dans les champs, bien tranquilles… Et d'un coup, le ciel s'est rempli de lumière ! Et de chants, des chants magnifiques ! On nous a dit d'aller voir à l'abri, en ville… qu'une grande nouvelle nous y attendait. Une grande nouvelle… mais laquelle ? Demain, je vous emmène voir ! En attendant, préparez vos plus belles voix : apprenez un chant de Noël !
+Vous ne devinerez jamais ce qui m'est arrivé ! Je m'appelle Benjamin, je suis berger. Cette nuit, on gardait nos moutons dans les champs, bien tranquilles… Et d'un coup, le ciel s'est rempli de lumière ! Et de chants, des chants magnifiques ! On nous a dit d'aller voir à l'abri, en ville… qu'une grande nouvelle nous y attendait. Une grande nouvelle… mais laquelle ? Demain, je vous emmène voir ! En attendant, préparez vos plus belles voix : répétez votre chant de Noël !
 
 ### 14 · Le bœuf
 
