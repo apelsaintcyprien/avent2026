@@ -25,7 +25,7 @@ Le 17 au soir, au temps fort, on découvre la crèche et sa mangeoire vide, et l
 | 3 | mer. 2 déc. | Le crieur de l'empereur | La destination : Bethléem | E | Matinée décoration : chaque classe décore sa classe et son couloir, et fabrique des étoiles |
 | 4 | jeu. 3 déc. | Le pêcheur | La jeune femme est fatiguée | S | Ramassage des déchets, chaque classe sur sa partie de cour |
 | 5 | ven. 4 déc. | Bourricot, l'âne | « Doucement, Bourricot ! » | T | Un service rendu à l'école, choisi par chaque classe |
-| 6 | lun. 7 déc. | Tobie, l'apprenti | Le berceau oublié, les santons | P | Chaque classe installe sa crèche avec ses santons, mangeoire vide. Toute la semaine, au périscolaire : bricolage d'un petit cadeau pour une personne de l'école |
+| 6 | lun. 7 déc. | Tobie, l'apprenti | Le berceau oublié, les santons | P | Chaque classe installe sa crèche avec ses santons (mangeoire vide, sans le dire aux enfants). Toute la semaine, au périscolaire : fabriquer de ses mains un petit cadeau pour une personne de l'école |
 | 7 | mar. 8 déc. | Myriam, la marchande | « Surtout dans ton état ! » | A | *Proposition :* à la récré, on partage (prêter un jeu, inviter quelqu'un à jouer) |
 | 8 | mer. 9 déc. | Élie, le chevrier | La montée est dure pour elle | R | *Proposition :* chacun dit ou écrit un petit mot d'encouragement à un camarade |
 | 9 | jeu. 10 déc. | Le gardien de la porte | Ils filent vers Bethléem | M | Chacun fait un effort de bienveillance envers les autres |
@@ -44,7 +44,7 @@ Remarques de l'équipe pastorale, intégrées dans le tableau ci-dessus et sur l
 - **Énigmes** : pas indispensables, les vidéos se suffisent à elles-mêmes. Libre à chaque enseignant de les utiliser, pour rester dans une réflexion plus spirituelle.
 - **Lettres** : inscrites derrière chaque personnage, installé dans l'école ; le S est découvert le 17 au soir, au temps fort, derrière le bœuf.
 - **Jours encore à valider** (les lignes marquées *Proposition* dans le tableau) : n°2 Père Claude, n°7 Myriam, n°8 Élie, n°12 l'aubergiste.
-- **Tobie (n°6)** : il parle des santons et lance l'installation des crèches dans les classes (mangeoire vide). Le bricolage se fait au périscolaire, pour une personne de l'école. Audio à réenregistrer.
+- **Tobie (n°6)** : il parle des santons et lance l'installation des crèches dans les classes, et garde l'appel à fabriquer quelque chose pour faire plaisir à quelqu'un. Le bricolage se fait au périscolaire, pour une personne de l'école. La mangeoire reste vide, mais Tobie n'en parle pas, pour garder le mystère du 17. Audio à réenregistrer.
 - **Audios réenregistrés** : l'étoile (n°11, « comptez les étoiles de votre couloir ») et Benjamin (n°13, « répétez votre chant de Noël ») ; les deux vidéos sont refaites.
 - *Proposition d'Adrien :* garder un geste de partage concret, facultatif : des gâteaux préparés en classe et échangés entre classes (recette, pesées, proportions, parts égales), éventuellement sur plusieurs jours. À discuter.
 
@@ -255,7 +255,7 @@ Hi-han ! Bonjour, bonjour ! Moi, c'est Bourricot. Mon travail, c'est de porter M
 
 ### 6 · Tobie, l'apprenti de Joseph
 
-Ouf… ouf… je les ai rattrapés ! Bonjour ! Je m'appelle Tobie, je suis l'apprenti de Joseph, le charpentier. Juste avant de partir, il avait fabriqué un objet en bois, tout petit, tout doux… et il l'a oublié à l'atelier ! Alors j'ai couru, couru, pour le lui rapporter. Et le soir, au campement, j'ai sculpté des petits personnages : Marie, Joseph, l'âne, un berger… Chez vous, on les appelle des santons ! À votre tour : installez la crèche dans votre classe, avec vos santons. Mais chut… la mangeoire, on la laisse vide pour l'instant !
+Ouf… ouf… je les ai rattrapés ! Bonjour ! Je m'appelle Tobie, je suis l'apprenti de Joseph, le charpentier. Juste avant de partir, il avait fabriqué un objet en bois, tout petit, tout doux… et il l'a oublié à l'atelier ! Alors j'ai couru, couru, pour le lui rapporter. Et le soir, au campement, j'ai sculpté des petits personnages : Marie, Joseph, l'âne, un berger… Chez vous, on les appelle des santons ! À votre tour : installez la crèche dans votre classe, avec vos santons. Et comme moi, fabriquez quelque chose de vos mains, pour faire plaisir à quelqu'un !
 
 ### 7 · Myriam, la marchande de dattes
 
