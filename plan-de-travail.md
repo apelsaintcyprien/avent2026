@@ -44,7 +44,7 @@ Remarques de l'équipe pastorale, intégrées dans le tableau ci-dessus et sur l
 - **Énigmes** : pas indispensables, les vidéos se suffisent à elles-mêmes. Libre à chaque enseignant de les utiliser, pour rester dans une réflexion plus spirituelle.
 - **Lettres** : inscrites derrière chaque personnage, installé dans l'école ; le S est découvert le 17 au soir, au temps fort, derrière le bœuf.
 - **Jours encore à valider** (les lignes marquées *Proposition* dans le tableau) : n°2 Père Claude, n°7 Myriam, n°8 Élie, n°12 l'aubergiste.
-- **Tobie (n°6)** : il parle des santons et lance l'installation des crèches dans les classes, et garde l'appel à fabriquer quelque chose pour faire plaisir à quelqu'un. Le bricolage se fait au périscolaire, pour une personne de l'école. La mangeoire reste vide, mais Tobie n'en parle pas, pour garder le mystère du 17. Audio à réenregistrer.
+- **Tobie (n°6)** : il parle des santons et lance l'installation des crèches dans les classes, et garde l'appel à fabriquer quelque chose pour faire plaisir à quelqu'un. Le bricolage se fait au périscolaire, pour une personne de l'école. La mangeoire reste vide, mais Tobie n'en parle pas, pour garder le mystère du 17. Nouvelle vidéo faite.
 - **Audios réenregistrés** : l'étoile (n°11, « comptez les étoiles de votre couloir ») et Benjamin (n°13, « répétez votre chant de Noël ») ; les deux vidéos sont refaites.
 - *Proposition d'Adrien :* garder un geste de partage concret, facultatif : des gâteaux préparés en classe et échangés entre classes (recette, pesées, proportions, parts égales), éventuellement sur plusieurs jours. À discuter.
 
