@@ -25,7 +25,7 @@ Le 17 au soir, au temps fort, on découvre la crèche et sa mangeoire vide, et l
 | 3 | mer. 2 déc. | Le crieur de l'empereur | La destination : Bethléem | E | Matinée décoration : chaque classe décore sa classe et son couloir, et fabrique des étoiles |
 | 4 | jeu. 3 déc. | Le pêcheur | La jeune femme est fatiguée | S | Ramassage des déchets, chaque classe sur sa partie de cour |
 | 5 | ven. 4 déc. | Bourricot, l'âne | « Doucement, Bourricot ! » | T | Un service rendu à l'école, choisi par chaque classe |
-| 6 | lun. 7 déc. | Tobie, l'apprenti | Le berceau oublié | P | Bricolage libre sur le reste de la semaine : un objet à offrir aux résidents d'Ehpad (relayer l'info aux garderies) |
+| 6 | lun. 7 déc. | Tobie, l'apprenti | Le berceau oublié, les santons | P | Chaque classe installe sa crèche avec ses santons, mangeoire vide. Toute la semaine, au périscolaire : bricolage d'un petit cadeau pour une personne de l'école |
 | 7 | mar. 8 déc. | Myriam, la marchande | « Surtout dans ton état ! » | A | *Proposition :* à la récré, on partage (prêter un jeu, inviter quelqu'un à jouer) |
 | 8 | mer. 9 déc. | Élie, le chevrier | La montée est dure pour elle | R | *Proposition :* chacun dit ou écrit un petit mot d'encouragement à un camarade |
 | 9 | jeu. 10 déc. | Le gardien de la porte | Ils filent vers Bethléem | M | Chacun fait un effort de bienveillance envers les autres |
@@ -44,17 +44,9 @@ Remarques de l'équipe pastorale, intégrées dans le tableau ci-dessus et sur l
 - **Énigmes** : pas indispensables, les vidéos se suffisent à elles-mêmes. Libre à chaque enseignant de les utiliser, pour rester dans une réflexion plus spirituelle.
 - **Lettres** : inscrites derrière chaque personnage, installé dans l'école ; le S est découvert le 17 au soir, au temps fort, derrière le bœuf.
 - **Jours encore à valider** (les lignes marquées *Proposition* dans le tableau) : n°2 Père Claude, n°7 Myriam, n°8 Élie, n°12 l'aubergiste.
+- **Tobie (n°6)** : il parle des santons et lance l'installation des crèches dans les classes (mangeoire vide). Le bricolage se fait au périscolaire, pour une personne de l'école. Audio à réenregistrer.
 - **Audios réenregistrés** : l'étoile (n°11, « comptez les étoiles de votre couloir ») et Benjamin (n°13, « répétez votre chant de Noël ») ; les deux vidéos sont refaites.
 - *Proposition d'Adrien :* garder un geste de partage concret, facultatif : des gâteaux préparés en classe et échangés entre classes (recette, pesées, proportions, parts égales), éventuellement sur plusieurs jours. À discuter.
-
-## Option : les CM2 portent les cadeaux
-
-Les CM2 portent aux personnes âgées les objets fabriqués le 7 décembre. La remise a lieu le mardi 15 décembre, le jour de l'aubergiste qui « fait de la place ». Deux pistes :
-
-- **Visite en Ehpad** : les CM2 distribuent eux-mêmes les objets et peuvent chanter leur chant de Noël. C'est plus fort pour les enfants, mais il faut organiser une sortie (autorisation, accompagnateurs, transport) et obtenir l'accord de l'Ehpad sur un créneau.
-- **Via le service à la personne de l'Agglo2B** : leurs intervenants remettent les objets à des personnes âgées isolées, chez elles. Aucune sortie à organiser, mais les enfants ne voient pas la remise ; un petit mot de retour ou une photo compenserait.
-
-La visite en Ehpad est la plus marquante si elle est réalisable : il faut contacter l'Ehpad dès novembre pour bloquer le créneau. L'Agglo2B est une bonne solution de repli, ou un complément si les objets sont nombreux.
 
 ## Les 14 témoins
 
@@ -104,7 +96,7 @@ Les énigmes sont facultatives : chaque enseignant est libre de s'en saisir ou n
 
 ### 6 · Tobie, l'apprenti de Joseph · lundi 7 décembre, le campement
 
-*Ouf, je les ai rattrapés ! Juste avant de partir, Joseph avait fabriqué un objet en bois tout petit, avec beaucoup de soin… et il l'a oublié à l'atelier ! J'ai couru pendant des jours pour le lui rapporter.*
+*Ouf, je les ai rattrapés ! Joseph avait oublié à l'atelier un objet en bois tout petit, fabriqué avec beaucoup de soin. Je le lui ai rapporté… et sur la route, j'ai sculpté des petits personnages : Marie, Joseph, l'âne, un berger. Chez vous, on les appelle des santons !*
 
 - **Cycle 1.** Parmi un marteau, une casserole et un pinceau, quel est l'outil du charpentier ?
 - **Cycle 2.** « Je suis en bois et un bébé dort dedans. » Indice : je commence par BER.
@@ -215,11 +207,11 @@ Les énigmes sont facultatives : chaque enseignant est libre de s'en saisir ou n
 - [ ] Le matériel de décoration pour le 2 décembre
 - [ ] Les 14 personnages à installer dans l'école, avec leur lettre inscrite au dos
 - [ ] Une feuille par élève pour les mots doux, et le baluchon
-- [ ] Relayer aux garderies le bricolage pour l'Ehpad (semaine du 7 décembre)
+- [ ] Une crèche et des santons dans chaque classe pour le 7 décembre (mangeoire vide)
+- [ ] Prévenir le périscolaire : bricolage d'un petit cadeau pour une personne de l'école (semaine du 7 décembre)
 - [ ] Prévenir les collègues : fabrication d'étoiles le 2 décembre
 - [ ] Valider les défis des jours 2, 7, 8 et 12
 - [x] Réenregistrer les audios de l'étoile (n°11) et de Benjamin (n°13)
-- [ ] Option CM2 : contacter l'Ehpad ou l'Agglo2B
 
 ## Textes des audios
 
@@ -263,7 +255,7 @@ Hi-han ! Bonjour, bonjour ! Moi, c'est Bourricot. Mon travail, c'est de porter M
 
 ### 6 · Tobie, l'apprenti de Joseph
 
-Ouf… ouf… je les ai rattrapés ! Bonjour ! Je m'appelle Tobie, je suis l'apprenti de Joseph, le charpentier. Juste avant de partir, il avait fabriqué un objet en bois. Tout petit, tout doux, avec beaucoup de soin… et il l'a oublié à l'atelier ! Alors j'ai couru, couru, pendant des jours, pour le lui rapporter. Quand il l'a vu, Joseph a souri… mais il n'a rien voulu me dire ! À votre tour, maintenant : fabriquez quelque chose de vos mains, pour faire plaisir à quelqu'un !
+Ouf… ouf… je les ai rattrapés ! Bonjour ! Je m'appelle Tobie, je suis l'apprenti de Joseph, le charpentier. Juste avant de partir, il avait fabriqué un objet en bois, tout petit, tout doux… et il l'a oublié à l'atelier ! Alors j'ai couru, couru, pour le lui rapporter. Et le soir, au campement, j'ai sculpté des petits personnages : Marie, Joseph, l'âne, un berger… Chez vous, on les appelle des santons ! À votre tour : installez la crèche dans votre classe, avec vos santons. Mais chut… la mangeoire, on la laisse vide pour l'instant !
 
 ### 7 · Myriam, la marchande de dattes
 
