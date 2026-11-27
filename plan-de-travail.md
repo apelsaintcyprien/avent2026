@@ -5,6 +5,7 @@ Le document de référence de l'équipe pastorale. On y trouve le déroulé jour
 - **Le site** : https://apelsaintcyprien.github.io/avent2026/ (une page par jour, déverrouillée à sa date)
 - **Les vidéos** : dossier [`videos/`](videos/)
 - **Le guide des enseignants**, jour par jour : [`guide-enseignants.pdf`](guide-enseignants.pdf)
+- **L'affiche de la route** (A2, une par classe) et **les pions de Marie et Joseph** (A4, 20 pions) : dossier [`affiche/`](affiche/)
 
 ## En bref
 
