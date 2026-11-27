@@ -305,6 +305,8 @@ const IC={
  sheep:`<g fill="#fff"><circle cx="-14" cy="-6" r="13"/><circle cx="2" cy="-12" r="14"/><circle cx="16" cy="-4" r="13"/><circle cx="-8" cy="8" r="13"/><circle cx="10" cy="9" r="13"/></g><ellipse cx="-24" cy="2" rx="10" ry="12" fill="#3a3432"/><circle cx="-26" cy="0" r="2.5" fill="#fff"/><path d="M-8 20 V32 M10 20 V32" stroke="#3a3432" stroke-width="5" stroke-linecap="round"/>`,
  ox:`<path d="M-18 -18 Q-36 -24 -34 -40 M18 -18 Q36 -24 34 -40" stroke="#f3ead8" stroke-width="7" fill="none" stroke-linecap="round"/><ellipse cy="0" rx="24" ry="26" fill="#8a5d3a"/><ellipse cy="16" rx="18" ry="12" fill="#d9a77a"/><circle cx="-10" cy="-4" r="3.5" fill="#1b1840"/><circle cx="10" cy="-4" r="3.5" fill="#1b1840"/><circle cx="-6" cy="16" r="2.5" fill="#6b4627"/><circle cx="6" cy="16" r="2.5" fill="#6b4627"/>`,
 };
+const PORT=["01-rachel","02-pere-claude","03-crieur","04-pecheur","05-bourricot","06-tobie","07-myriam","08-elie","09-gardien","10-anna","11-etoile","12-aubergiste","13-benjamin","14-boeuf"];
+const portHTML=(n,size=150)=>`<span style="display:inline-block;width:${size}px;height:${size}px;border-radius:50%;overflow:hidden;border:6px solid #e6a92e;box-shadow:0 8px 22px rgba(40,25,10,.35);background:#fff8ea"><img src="personnages/${PORT[n-1]}.jpg" alt="" width="${size}" height="${size}" style="display:block;width:100%;height:100%;object-fit:cover"></span>`;
 const icSVG=(k,size=96,ring="#b5413a")=>`<svg viewBox="-50 -50 100 100" width="${size}" height="${size}" aria-hidden="true"><circle r="46" fill="#fff8ea" stroke="${ring}" stroke-width="5"/>${IC[k]}</svg>`;
 
 /* ===================== CARTE ===================== */
@@ -334,7 +336,7 @@ function buildMap(){
       <g class="med">
         <ellipse cy="52" rx="40" ry="9" fill="#000" opacity=".15"/>
         <circle class="ring" r="50" fill="#fff8ea" stroke="${ring}" stroke-width="7"/>
-        <g ${ok?"":'opacity=".28"'}>${IC[d.ic]}</g>
+        ${ok?`<image href="personnages/${PORT[d.n-1]}.jpg" x="-47" y="-47" width="94" height="94" clip-path="url(#medclip)" preserveAspectRatio="xMidYMid slice"/><circle r="47" fill="none" stroke="#000" stroke-opacity=".12" stroke-width="3"/>`:`<g opacity=".28">${IC[d.ic]}</g>`}
         ${ok?"":`<g transform="translate(0 4)"><rect x="-15" y="-6" width="30" height="24" rx="5" fill="#7b6a5d"/><path d="M-9 -6 V-14 Q0 -26 9 -14 V-6" stroke="#7b6a5d" stroke-width="5" fill="none"/></g>`}
         <circle cx="36" cy="-36" r="16" fill="${ring}"/><text x="36" y="-30" text-anchor="middle" font-family="Fredoka,sans-serif" font-weight="700" font-size="17" fill="#fff">${d.n}</text>
       </g>
@@ -342,7 +344,7 @@ function buildMap(){
       <text text-anchor="middle" y="8" font-family="Fredoka,sans-serif" font-weight="600" font-size="23" fill="#2b2238">${label}</text></g>
     </g>`});
   const svg=`
-  <defs>
+  <defs><clipPath id="medclip"><circle r="47"/></clipPath>
     <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#1b1840"/><stop offset=".09" stop-color="#2e2a6b"/><stop offset=".16" stop-color="#8a4f7d"/><stop offset=".21" stop-color="#e59a7e"/>
       <stop offset=".26" stop-color="#f1d9ae"/><stop offset=".7" stop-color="#efcf98"/><stop offset=".78" stop-color="#e59a7e"/><stop offset=".84" stop-color="#8a4f7d"/><stop offset=".9" stop-color="#2e2a6b"/><stop offset="1" stop-color="#1b1840"/>
@@ -482,7 +484,7 @@ function dayHTML(d){
     </div>`}
   return `<div class="close"><div><button class="pill" data-act="close">← La carte</button>
       <div class="navs"><button class="pill" data-go="${n-1}" ${prevOk?"":"disabled"} aria-label="Jour précédent">←</button><span class="pill" aria-hidden="true">${n} / 14</span><button class="pill" data-go="${n+1}" ${nextOk?"":"disabled"} aria-label="Jour suivant">→</button></div></div></div>
-    ${heroHTML(n,`<span class="pop">${icSVG(d.ic,150)}</span><div class="rise"><div class="k">Jour ${n} · ${esc(d.jour)} · ${esc(d.lieu)}</div><h2>${esc(d.titre)}</h2></div>`)}
+    ${heroHTML(n,`<span class="pop">${portHTML(n,170)}</span><div class="rise"><div class="k">Jour ${n} · ${esc(d.jour)} · ${esc(d.lieu)}</div><h2>${esc(d.titre)}</h2></div>`)}
     <div class="pg">
     <div class="frame rise" style="animation-delay:.1s">${vid}</div>
     <div class="sec rise" style="animation-delay:.18s"><button class="scroll" aria-expanded="false"><span class="bar">Lire le témoignage</span></button>
